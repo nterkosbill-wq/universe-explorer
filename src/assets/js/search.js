@@ -175,11 +175,12 @@
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         move(-1);
-      } else if (e.key === 'Enter' && active > -1) {
+      } else if (e.key === 'Enter') {
         var nodes = results.querySelectorAll('.search-result');
-        if (nodes[active]) {
+        var target = nodes[active > -1 ? active : 0];
+        if (target) {
           e.preventDefault();
-          nodes[active].click();
+          target.click();
         }
       }
     });
