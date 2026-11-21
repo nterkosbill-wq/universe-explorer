@@ -1,5 +1,9 @@
 """Shared layout, navigation and document shell for Universe Explorer."""
 
+# Προαιρετικό: βάλε εδώ το email επικοινωνίας για θέματα απορρήτου (GDPR).
+# Αν μείνει κενό, η σελίδα απορρήτου εμφανίζει γενική διατύπωση χωρίς email.
+CONTACT_EMAIL = ""
+
 NAV = [
     ("index.html", "Αρχική"),
     ("solar-system.html", "Ηλιακό Σύστημα"),
@@ -11,6 +15,11 @@ NAV = [
     ("mysteries.html", "Μυστήρια"),
     ("quiz.html", "Κουίζ"),
 ]
+
+CHAT_AI_NOTE = """  <div class="ai-note" role="note">
+    <span class="ai-note__badge">AI</span>
+    <span class="ai-note__text">Ψηφιακός βοηθός AI — όχι άνθρωπος</span>
+  </div>"""
 
 CHATLING_EMBED = """  <!-- ==== Chatling chatbot — αντικαταστήστε μόνο το chatbotId αν αλλάξει το bot ==== -->
   <script>
@@ -238,12 +247,17 @@ def footer() -> str:
             <li><a href="index.html#timeline">Χρονολόγιο σύμπαντος</a></li>
             <li><a href="solar-system.html#orrery">Διαδραστικό ηλιακό σύστημα</a></li>
             <li><a href="exploration.html#credits">Πηγές εικόνων</a></li>
+            <li><a href="privacy.html">Απόρρητο &amp; χρήση AI</a></li>
           </ul>
         </div>
       </div>
+      <div class="footer-disclosure">
+        <p><strong>Διαφάνεια AI:</strong> Το κείμενο, η σχεδίαση και ο κώδικας της ιστοσελίδας δημιουργήθηκαν με τη βοήθεια συστημάτων τεχνητής νοημοσύνης (AI). Ο ψηφιακός βοηθός στο κουμπί συνομιλίας είναι επίσης σύστημα AI, όχι άνθρωπος, και οι απαντήσεις του μπορεί να περιέχουν ανακρίβειες. Το περιεχόμενο έχει εκπαιδευτικό χαρακτήρα και δεν αποτελεί επαγγελματική συμβουλή.</p>
+        <p><strong>Εικόνες &amp; ανεξαρτησία:</strong> Οι εικόνες προέρχονται από δημόσια αρχεία της NASA, ESA και STScI και χρησιμοποιούνται με αναφορά πηγής για εκπαιδευτικούς σκοπούς. Η ιστοσελίδα είναι ανεξάρτητο εκπαιδευτικό project και δεν συνδέεται ούτε εγκρίνεται από τη NASA, την ESA ή άλλον οργανισμό. <a href="privacy.html">Απόρρητο &amp; χρήση AI</a></p>
+      </div>
       <div class="footer-bottom">
         <p>© <span class="js-year">2026</span> Universe Explorer · Εκπαιδευτικό project αστρονομίας</p>
-        <p class="credits">Οι εικόνες προέρχονται από δημόσια αρχεία της NASA, ESA και STScI και χρησιμοποιούνται για εκπαιδευτικούς σκοπούς.</p>
+        <p class="credits">Χωρίς διαφημίσεις και χωρίς εργαλεία παρακολούθησης (analytics).</p>
       </div>
     </div>
   </footer>
@@ -265,6 +279,8 @@ def document(title: str, desc: str, page: str, active: str, body: str, scripts=(
         + MUSIC_PLAYER.replace("{play}", ICON_PLAY).replace("{pause}", ICON_PAUSE).replace("{vol}", ICON_VOLUME).replace("{note}", ICON_NOTE)
         + "\n"
         + script_tags
+        + "\n"
+        + CHAT_AI_NOTE
         + "\n"
         + CHATLING_EMBED
         + "\n</body>\n</html>\n"
