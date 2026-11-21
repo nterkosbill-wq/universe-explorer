@@ -1,0 +1,579 @@
+/* ==========================================================================
+   Universe Explorer — responsive rules
+   ========================================================================== */
+
+@media (max-width: 1240px) {
+  .main-nav a {
+    padding: 9px 8px;
+    font-size: 0.79rem;
+  }
+
+  .header-tools {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .main-nav {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: grid;
+  }
+
+  .header-tools {
+    margin-left: auto;
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .journey {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .journey > .card,
+  .journey > .card:nth-child(1),
+  .journey > .card:nth-child(2) {
+    grid-column: span 2;
+  }
+
+  .journey > .card:nth-child(1) .card__media img,
+  .journey > .card:nth-child(2) .card__media img {
+    aspect-ratio: 16 / 9.4;
+  }
+
+  .article-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .toc {
+    display: none;
+  }
+
+  .toc--inline {
+    display: grid;
+    position: static;
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 980px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .split--reverse > *:first-child {
+    order: 2;
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gal-types {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gal-type {
+    min-height: 280px;
+  }
+
+  .mystery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bh-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bh-art {
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--header-h) + clamp(34px, 8vw, 64px));
+    padding-bottom: 70px;
+  }
+
+  .hero__bg {
+    background:
+      linear-gradient(180deg, rgba(4, 3, 15, 0.55) 0%, rgba(4, 3, 15, 0.82) 42%, var(--bg) 96%),
+      url("../img/hero-nebula.jpg") 62% 26% / cover no-repeat;
+    opacity: 1;
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .hero__copy {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.7rem, 11vw, 4.4rem);
+  }
+
+  .hero__planet {
+    order: 2;
+    width: min(78vw, 440px);
+    margin-top: -10px;
+    margin-bottom: -40px;
+    opacity: 0.92;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  .hero__meta {
+    margin-top: 30px;
+    gap: 8px 18px;
+    font-size: 0.62rem;
+  }
+
+  .page-hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-hero__side {
+    display: none;
+  }
+
+  .page-hero h1 {
+    max-width: 22ch;
+  }
+
+  .body-hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+
+  .body-visual {
+    order: -1;
+    max-width: 380px;
+    margin-inline: auto;
+  }
+
+  .body-visual__orb {
+    animation: none;
+  }
+
+  .body-hero h1 {
+    font-size: clamp(2.4rem, 9vw, 3.4rem);
+  }
+
+  .solar {
+    aspect-ratio: 4 / 4.6;
+    min-height: 430px;
+    max-height: none;
+  }
+
+  .solar__info {
+    position: static;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    background: rgba(8, 6, 24, 0.6);
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .solar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .solar__stage {
+    position: relative;
+    flex: 1;
+  }
+
+  .solar__legend {
+    order: 3;
+    padding: 14px;
+  }
+
+  .lifecycle {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .lifecycle::before {
+    left: 16px;
+    right: auto;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, rgba(170, 160, 255, 0.5), rgba(106, 215, 255, 0.4), transparent);
+  }
+
+  .stage {
+    padding-top: 0;
+    padding-left: 54px;
+    min-height: 40px;
+  }
+
+  .stage::before {
+    top: 0;
+  }
+
+  .timeline__item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+    padding-bottom: 24px;
+  }
+
+  .mission {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mission__media {
+    min-height: 190px;
+  }
+
+  .mission__media img {
+    position: relative;
+    height: 190px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery figure:first-child {
+    grid-column: span 2;
+    grid-row: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .compare__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .compare__cell:first-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .music {
+    left: 14px;
+    bottom: 14px;
+    width: min(300px, calc(100vw - 28px));
+  }
+
+  .music-fab {
+    left: 14px;
+    bottom: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --radius: 20px;
+    --header-h: 66px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .container {
+    padding-inline: 18px;
+  }
+
+  .section {
+    padding-block: clamp(44px, 9vw, 64px);
+  }
+
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .journey {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .journey > .card,
+  .journey > .card:nth-child(1),
+  .journey > .card:nth-child(2) {
+    grid-column: 1 / -1;
+  }
+
+  .stat-band {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .stat-band .stat + .stat {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .stat-band .stat:nth-child(even) {
+    border-left: 1px solid var(--line);
+    padding-left: 22px;
+  }
+
+  .cosmic-timeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px 10px;
+    padding-top: 10px;
+  }
+
+  .cosmic-timeline::before {
+    display: none;
+  }
+
+  .cosmic-step {
+    padding-top: 16px;
+  }
+
+  .cosmic-step::before {
+    top: -4px;
+  }
+
+  .feature-band {
+    min-height: 340px;
+    padding: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .pager {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pager__link--next {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .two-col-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tabs {
+    width: 100%;
+    border-radius: 16px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .tabs button {
+    padding: 9px 14px;
+    font-size: 0.78rem;
+  }
+
+  .quiz {
+    padding: 20px 16px;
+  }
+
+  .quiz__option {
+    grid-template-columns: 26px minmax(0, 1fr);
+    padding: 14px;
+    font-size: 0.88rem;
+  }
+
+  .quiz__option em {
+    width: 26px;
+    height: 26px;
+  }
+
+  .quiz__mark {
+    display: none;
+  }
+
+  .quiz__ring {
+    width: 148px;
+    height: 148px;
+  }
+
+  .solar {
+    aspect-ratio: 1 / 1.32;
+    min-height: 420px;
+  }
+
+  .solar__hint {
+    font-size: 0.56rem;
+  }
+
+  .planet-dot .solar__label {
+    display: none;
+  }
+
+  .search {
+    padding-top: 16px;
+  }
+
+  .search__panel {
+    border-radius: 18px;
+  }
+
+  .search__body {
+    max-height: 64vh;
+  }
+
+  .search-result {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+
+  .search-result__cat {
+    display: none;
+  }
+
+  .site-footer {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+
+  .credits-list li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3px;
+  }
+
+  .split {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero__actions {
+    gap: 10px;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .hero__meta li {
+    font-size: 0.6rem;
+  }
+
+  .body-hero__facts {
+    gap: 18px;
+  }
+
+  .body-hero__facts dd {
+    font-size: 0.9rem;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat {
+    padding: 16px;
+  }
+
+  .stat__value {
+    font-size: 1.35rem;
+  }
+
+  .layers {
+    height: 44px;
+  }
+
+  .layers span {
+    font-size: 0.55rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .gallery figcaption {
+    font-size: 0.6rem;
+    padding: 16px 9px 8px;
+  }
+
+  .compare__cell {
+    padding: 15px 16px;
+    font-size: 0.82rem;
+  }
+
+  .moon,
+  .exo {
+    padding: 17px;
+  }
+
+  .note {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .acc summary {
+    padding: 15px 16px;
+    font-size: 0.95rem;
+  }
+
+  .acc__body {
+    padding: 0 16px 18px;
+  }
+
+  .card__body {
+    padding: 18px;
+  }
+
+  .missions .mission__body {
+    padding: 18px;
+  }
+
+  .ticker__track {
+    animation-duration: 34s;
+  }
+}
+
+@media (hover: none) {
+  .card:hover,
+  .moon:hover,
+  .exo:hover,
+  .mystery:hover,
+  .gal-type:hover,
+  .mission:hover {
+    transform: none;
+  }
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .music,
+  .search,
+  .page-veil,
+  .space-bg,
+  .hero__scroll {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+  }
+}

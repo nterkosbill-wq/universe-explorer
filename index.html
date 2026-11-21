@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Universe Explorer — Εξερεύνησε το Άπειρο</title>
+  <meta name="description" content="Ένα ταξίδι στα βάθη του σύμπαντος: πλανήτες, άστρα, γαλαξίες, μαύρες τρύπες και τα μεγάλα μυστήρια που ξεπερνούν τη φαντασία.">
+  <meta name="theme-color" content="#04030f">
+  <meta property="og:title" content="Universe Explorer — Εξερεύνησε το Άπειρο">
+  <meta property="og:description" content="Ένα ταξίδι στα βάθη του σύμπαντος: πλανήτες, άστρα, γαλαξίες, μαύρες τρύπες και τα μεγάλα μυστήρια που ξεπερνούν τη φαντασία.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body class="page-home">
+  <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="page-veil" aria-hidden="true"></div>
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__orbit"><span></span><span></span><span></span><i></i></div>
+    <p class="preloader__text">Ευθυγράμμιση με τα άστρα</p>
+    <div class="preloader__bar"><i></i></div>
+  </div>
+
+  <div class="space-bg" aria-hidden="true">
+    <canvas id="starfield"></canvas>
+    <div class="space-bg__nebula"></div>
+    <div class="space-bg__nebula space-bg__nebula--two"></div>
+    <div class="space-bg__grain"></div>
+  </div>
+  <header class="site-header" id="siteHeader">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1h)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2h)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1h" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2h" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+        <span class="brand__text">
+          <span class="brand__name">Universe</span>
+          <span class="brand__sub">Explorer</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Κύρια πλοήγηση">
+        <ul>
+          <li><a href="index.html" aria-current="page">Αρχική</a></li>
+          <li><a href="solar-system.html">Ηλιακό Σύστημα</a></li>
+          <li><a href="stars.html">Άστρα</a></li>
+          <li><a href="galaxies.html">Γαλαξίες</a></li>
+          <li><a href="black-holes.html">Μαύρες Τρύπες</a></li>
+          <li><a href="exploration.html">Εξερεύνηση</a></li>
+          <li><a href="life.html">Ζωή στο Σύμπαν</a></li>
+          <li><a href="mysteries.html">Μυστήρια</a></li>
+          <li><a href="quiz.html">Κουίζ</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <button type="button" class="icon-btn js-search-open" aria-label="Αναζήτηση" title="Αναζήτηση (/)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+        <button type="button" class="icon-btn js-music-toggle" aria-label="Μουσική" aria-controls="musicPlayer" title="Μουσική"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/></svg></button>
+        <button type="button" class="icon-btn nav-toggle" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" aria-label="Μενού πλοήγησης">
+    <div class="mobile-nav__top">
+      <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1m)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2m)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1m" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2m" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+        <span class="brand__text"><span class="brand__name">Universe</span><span class="brand__sub">Explorer</span></span>
+      </a>
+      <button type="button" class="icon-btn js-nav-close" aria-label="Κλείσιμο μενού"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <ul class="mobile-nav__list">
+          <li><a href="index.html" aria-current="page"><span>01</span>Αρχική</a></li>
+          <li><a href="solar-system.html"><span>02</span>Ηλιακό Σύστημα</a></li>
+          <li><a href="stars.html"><span>03</span>Άστρα</a></li>
+          <li><a href="galaxies.html"><span>04</span>Γαλαξίες</a></li>
+          <li><a href="black-holes.html"><span>05</span>Μαύρες Τρύπες</a></li>
+          <li><a href="exploration.html"><span>06</span>Εξερεύνηση</a></li>
+          <li><a href="life.html"><span>07</span>Ζωή στο Σύμπαν</a></li>
+          <li><a href="mysteries.html"><span>08</span>Μυστήρια</a></li>
+          <li><a href="quiz.html"><span>09</span>Κουίζ</a></li>
+    </ul>
+    <div class="mobile-nav__foot">
+      <p>Ένα ταξίδι στα βάθη του σύμπαντος, με επιστημονικά τεκμηριωμένο περιεχόμενο στα ελληνικά.</p>
+    </div>
+  </div>
+
+  <main id="main">
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow"><span class="dot"></span>Universe Explorer · Ένας οδηγός στο άπειρο</p>
+        <h1>Εξερεύνησε το <em>Άπειρο</em></h1>
+        <p class="hero__lead">Ένα ταξίδι στα βάθη του σύμπαντος ξεκινά εδώ. Ανακάλυψε πλανήτες, άστρα, γαλαξίες και μυστήρια που ξεπερνούν τη φαντασία.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#journey">Ξεκίνα την εξερεύνηση
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="quiz.html">Δοκίμασε το κουίζ</a>
+        </div>
+        <ul class="hero__meta"><li>13,8 δισ. έτη ιστορίας</li><li>93 δισ. έτη φωτός παρατηρήσιμο σύμπαν</li><li>200+ δισ. γαλαξίες</li></ul>
+      </div>
+      <div class="hero__planet"><svg viewBox="0 0 460 460" role="img" aria-label="Σχηματική απεικόνιση γίγαντα αερίων με δακτυλίους">
+        <defs>
+          <radialGradient id="pg" cx="34%" cy="28%" r="82%">
+            <stop offset="0%" stop-color="#f6e0c2"/>
+            <stop offset="38%" stop-color="#d9b083"/>
+            <stop offset="72%" stop-color="#8a6a9e"/>
+            <stop offset="100%" stop-color="#241a44"/>
+          </radialGradient>
+          <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#cbb8ff" stop-opacity=".15"/>
+            <stop offset="35%" stop-color="#f0dcb8" stop-opacity=".8"/>
+            <stop offset="65%" stop-color="#9fd8ff" stop-opacity=".55"/>
+            <stop offset="100%" stop-color="#8b5cf6" stop-opacity=".1"/>
+          </linearGradient>
+          <clipPath id="pgClip"><circle cx="230" cy="230" r="132"/></clipPath>
+          <clipPath id="ringFront"><rect x="0" y="236" width="460" height="224"/></clipPath>
+        </defs>
+        <g class="planet-spin">
+          <circle cx="230" cy="230" r="132" fill="url(#pg)"/>
+          <g clip-path="url(#pgClip)" fill="#fff">
+            <ellipse cx="230" cy="168" rx="150" ry="13" opacity=".12"/>
+            <ellipse cx="230" cy="204" rx="150" ry="9" opacity=".08"/>
+            <ellipse cx="230" cy="246" rx="150" ry="16" opacity=".14"/>
+            <ellipse cx="230" cy="284" rx="150" ry="10" opacity=".09"/>
+            <ellipse cx="230" cy="312" rx="150" ry="7" opacity=".07"/>
+          </g>
+          <circle cx="230" cy="230" r="132" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1"/>
+        </g>
+        <ellipse cx="230" cy="242" rx="206" ry="48" fill="none" stroke="url(#ring)" stroke-width="11" transform="rotate(-15 230 242)" opacity=".55"/>
+        <g clip-path="url(#ringFront)">
+          <ellipse cx="230" cy="242" rx="206" ry="48" fill="none" stroke="url(#ring)" stroke-width="11" transform="rotate(-15 230 242)" opacity=".9"/>
+        </g>
+      </svg></div>
+    </div>
+    <a class="hero__scroll" href="#journey">Κύλισε<i aria-hidden="true"></i></a>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker__track"><span>13,8 δισ. έτη</span><span>93 δισ. έτη φωτός</span><span>2 τρισ. γαλαξίες</span><span>8 πλανήτες</span><span>1 γαλαξίας</span><span>10²⁴ αστέρια</span></div></div>
+  <section class="section" id="journey">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="eyebrow"><span class="dot"></span>Ο χάρτης του ταξιδιού</p>
+        <h2 class="h2">Οκτώ σταθμοί στο άπειρο</h2></div>
+        <p class="lead">Από τον Ήλιο και τους γείτονές μας μέχρι τις μαύρες τρύπες και τα όρια της γνώσης. Διάλεξε από πού θα ξεκινήσεις.</p>
+      </div>
+      <div class="journey reveal"><a class="card" href="solar-system.html"><div class="card__media"><img src="assets/img/planet-saturn2.jpg" alt="Το Ηλιακό μας Σύστημα" decoding="async" loading="lazy"><span class="card__index">01</span></div><div class="card__body"><h3 class="card__title">Το Ηλιακό μας Σύστημα</h3><p class="card__text">Ο Ήλιος, οκτώ πλανήτες, νάνοι πλανήτες, δεκάδες δορυφόροι και δισεκατομμύρια μικρά σώματα — το σπίτι μας στο διάστημα.</p><span class="card__meta">9 σελίδες · διαδραστικό μοντέλο</span><span class="card__arrow">Εξερεύνησε<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></a><a class="card" href="stars.html"><div class="card__media"><img src="assets/img/stars-pillars.jpg" alt="Άστρα &amp; Αστρική Εξέλιξη" decoding="async" loading="lazy"><span class="card__index">02</span></div><div class="card__body"><h3 class="card__title">Άστρα &amp; Αστρική Εξέλιξη</h3><p class="card__text">Από τα μοριακά νέφη στους ερυθρούς γίγαντες και τους λευκούς νάνους: πώς γεννιέται, ζει και πεθαίνει ένα άστρο.</p><span class="card__meta">Γέννηση · ζωή · θάνατος</span><span class="card__arrow">Εξερεύνησε<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></a><a class="card" href="galaxies.html"><div class="card__media"><img src="assets/img/galaxy-andromeda.jpg" alt="Γαλαξίες" decoding="async" loading="lazy"><span class="card__index">03</span></div><div class="card__body"><h3 class="card__title">Γαλαξίες</h3><p class="card__text">Σπειροειδείς, ελλειπτικοί και ακανόνιστοι νησιά άστρων. Ο δικός μας Γαλαξίας και οι γείτονές του στο Τοπικό Σμήνος.</p><span class="card__meta">Μορφές · Milky Way · συγκρούσεις</span><span class="card__arrow">Εξερεύνησε<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></a><a class="card" href="black-holes.html"><div class="card__media"><img src="assets/img/bh-m87.jpg" alt="Μαύρες Τρύπες" decoding="async" loading="lazy"><span class="card__index">04</span></div><div class="card__body"><h3 class="card__title">Μαύρες Τρύπες</h3><p class="card__text">Περιοχές όπου η βαρύτητα νικά ακόμη και το φως. Ορίζοντας γεγονότων, υπερμεγέθεις γίγαντες και τα όρια της γνώσης μας.</p><span class="card__meta">Ορίζοντας · M87* · ανοιχτά ερωτήματα</span><span class="card__arrow">Εξερεύνησε<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></a><a class="card" href="exploration.html"><div class="card__media"><img src="assets/img/exploration-jwst.jpg" alt="Εξερεύνηση του Διαστήματος" decoding="async" loading="lazy"><span class="card__index">05</span></div><div class="card__body"><h3 class="card__title">Εξερεύνηση του Διαστήματος</h3><p class="card__text">Από το Sputnik και το Apollo 11 στο Voyager, το James Webb και τους σταθμούς του μέλλοντος.</p><span class="card__meta">Ιστορία · αποστολές · μέλλον</span><span class="card__arrow">Εξερεύνησε<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></a><a class="card" href="life.html"><div class="card__media"><img src="assets/img/life-trappist.jpg" alt="Ζωή πέρα από τη Γη" decoding="async" loading="lazy"><span class="card__index">06</span></div><div class="card__body"><h3 class="card__title">Ζωή πέρα από τη Γη</h3><p class="card__text">Χιλιάδες εξωπλανήτες, κατοικήσιμες ζώνες και η μεγάλη ερώτηση: είμαστε μόνοι;</p><span class="card__meta">Εξωπλανήτες · βιοϋπογραφές</span><span class="card__arrow">Εξερεύνησε<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></a><a class="card" href="mysteries.html"><div class="card__media"><img src="assets/img/galaxy-deepfield.jpg" alt="Τα Μεγάλα Μυστήρια" decoding="async" loading="lazy"><span class="card__index">07</span></div><div class="card__body"><h3 class="card__title">Τα Μεγάλα Μυστήρια</h3><p class="card__text">Σκοτεινή ύλη, σκοτεινή ενέργεια, η διαστολή του σύμπαντος και τι υπήρχε πριν από τη Μεγάλη Έκρηξη.</p><span class="card__meta">Σκοτεινό σύμπαν · ανοιχτές ερωτήσεις</span><span class="card__arrow">Εξερεύνησε<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></a><a class="card" href="quiz.html"><div class="card__media"><img src="assets/img/hero-nebula.jpg" alt="Κουίζ Γνώσεων" decoding="async" loading="lazy"><span class="card__index">08</span></div><div class="card__body"><h3 class="card__title">Κουίζ Γνώσεων</h3><p class="card__text">Δέκα τυχαίες ερωτήσεις από όλες τις ενότητες, με εξηγήσεις και βαθμολογία. Πόσο καλά γνωρίζεις το σύμπαν;</p><span class="card__meta">10 ερωτήσεις · βαθμολογία</span><span class="card__arrow">Εξερεύνησε<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div></a></div>
+    </div>
+  </section>
+  <section class="section" id="cosmos">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="eyebrow"><span class="dot"></span>13,8 δισεκατομμύρια χρόνια</p>
+        <h2 class="h2">Η ιστορία του σύμπαντος σε έξι στιγμές</h2></div>
+        <p class="lead">Πάτησε έναν σταθμό της χρονογραμμής. Κάθε σημείο κρύβει μια διαφορετική εποχή — και μια διαφορετική βεβαιότητα.</p>
+      </div>
+      <div class="reveal" id="cosmic">
+        <div class="cosmic-timeline" role="tablist" aria-label="Χρονογραμμή του σύμπαντος"><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="0"><span class="cosmic-step__time">πριν 13,8 δισ. έτη</span><span class="cosmic-step__label">Μεγάλη Έκρηξη</span></button><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="1"><span class="cosmic-step__time">πριν 13,6 δισ. έτη</span><span class="cosmic-step__label">Πρώτα άστρα</span></button><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="2"><span class="cosmic-step__time">πριν 13,2 δισ. έτη</span><span class="cosmic-step__label">Πρώτοι γαλαξίες</span></button><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="3"><span class="cosmic-step__time">πριν 9,2 δισ. έτη</span><span class="cosmic-step__label">Σχηματισμός Ήλιου</span></button><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="4"><span class="cosmic-step__time">πριν 4,5 δισ. έτη</span><span class="cosmic-step__label">Η Γη</span></button><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="5"><span class="cosmic-step__time">πριν 3,8–3,5 δισ. έτη</span><span class="cosmic-step__label">Πρώτη ζωή</span></button><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="6"><span class="cosmic-step__time">σήμερα</span><span class="cosmic-step__label">Εμείς</span></button><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="7"><span class="cosmic-step__time">σε ~5 δισ. έτη</span><span class="cosmic-step__label">Τέλος του Ήλιου</span></button><button type="button" class="cosmic-step" role="tab" aria-selected="false" data-step="8"><span class="cosmic-step__time">σε 10¹⁴+ έτη</span><span class="cosmic-step__label">Σκοτεινή εποχή</span></button></div>
+        <div class="cosmic-detail is-visible">
+          <span class="badge badge--cyan js-cosmic-badge">Επιβεβαιωμένο μοντέλο</span>
+          <h3 class="js-cosmic-title">Η αρχή του χρόνου</h3>
+          <p class="js-cosmic-text">Το σύμπαν ήταν εξαιρετικά καυτό και πυκνό. Από εκείνη τη στιγμή ξεκινούν ο χώρος, ο χρόνος και η διαστολή που συνεχίζεται μέχρι σήμερα. Τα πρώτα δευτερόλεπτα παρήγαγαν τα ελαφρά στοιχεία: υδρογόνο, ήλιο και ίχνη λιθίου.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--tight">
+    <div class="container">
+      <div class="feature-band reveal">
+        <img src="assets/img/galaxy-milkyway.jpg" alt="Ο Γαλαξίας μας σε οπτικό και υπέρυθρο φως" decoding="async" loading="lazy">
+        <div class="feature-band__content">
+          <span class="badge badge--violet">Ο οίκος μας</span>
+          <h2>Είμαστε ένα αστέρι ανάμεσα σε δισεκατομμύρια</h2>
+          <p>Ο Ήλιος βρίσκεται σε έναν από τους βραχίονες του Γαλαξία, περίπου 26.000 έτη φωτός από το κέντρο του. Ταξιδεύει γύρω του με 220 χλμ./δευτ. και χρειάζεται 230 εκατομμύρια χρόνια για έναν κύκλο.</p>
+          <div class="hero__actions"><a class="link-arrow" href="galaxies.html">Γνώρισε τους γαλαξίες<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--tight">
+    <div class="container container--narrow">
+      <div class="fact-card reveal" id="factCard">
+        <div class="fact-card__head">
+          <span class="fact-card__tag js-fact-tag">Ήξερες ότι;</span>
+          <span class="badge badge--violet">Τυχαίο επιστημονικό γεγονός</span>
+        </div>
+        <p class="fact-card__text js-fact-text">Μια ημέρα στην Αφροδίτη διαρκεί περισσότερο από το έτος της: 243 γήινες ημέρες περιστροφής έναντι 225 ημερών τροχιάς.</p>
+        <div class="fact-card__foot">
+          <span>Πάτησε για το επόμενο γεγονός</span>
+          <button type="button" class="btn btn--ghost js-fact-next">Επόμενο γεγονός
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <p class="eyebrow"><span class="dot"></span>Έτοιμος;</p>
+        <h2>Πόσο καλά γνωρίζεις το σύμπαν;</h2>
+        <p>Δέκα ερωτήσεις, εξηγήσεις για κάθε απάντηση και μια βαθμολογία στο τέλος. Χωρίς χρόνο, χωρίς πίεση.</p>
+        <div class="btn-row"><a class="btn" href="quiz.html">Ξεκίνα το κουίζ</a><a class="btn btn--ghost" href="solar-system.html">Πρώτα το ηλιακό σύστημα</a></div>
+      </div>
+    </div>
+  </section>
+
+  <script>window.UE_COSMIC = [{"time": "πριν 13,8 δισ. έτη", "label": "Μεγάλη Έκρηξη", "title": "Η αρχή του χρόνου", "text": "Το σύμπαν ήταν εξαιρετικά καυτό και πυκνό. Από εκείνη τη στιγμή ξεκινούν ο χώρος, ο χρόνος και η διαστολή που συνεχίζεται μέχρι σήμερα. Τα πρώτα δευτερόλεπτα παρήγαγαν τα ελαφρά στοιχεία: υδρογόνο, ήλιο και ίχνη λιθίου.", "badge": "Επιβεβαιωμένο μοντέλο"}, {"time": "πριν 13,6 δισ. έτη", "label": "Πρώτα άστρα", "title": "Το σύμπαν ανάβει", "text": "Μερικές εκατοντάδες εκατομμύρια χρόνια μετά τη Μεγάλη Έκρηξη, τα πρώτα άστρα — πιθανώς πολύ μεγάλα και λαμπρά — άρχισαν να συντήκουν υδρογόνο. Η ακτινοβολία τους επανιονίστηκε το αέριο του σύμπαντος και το έκανε διαφανές στο φως.", "badge": "Ισχυρές ενδείξεις"}, {"time": "πριν 13,2 δισ. έτη", "label": "Πρώτοι γαλαξίες", "title": "Νησιά άστρων", "text": "Η βαρύτητα συγκέντρωσε άστρα και αέριο σε γαλαξίες. Το James Webb παρατηρεί σήμερα γαλαξίες που σχηματίστηκαν μέσα στα πρώτα 300 εκατομμύρια χρόνια — πιο ώριμους από ό,τι προέβλεπαν τα απλά μοντέλα.", "badge": "Παρατηρημένο"}, {"time": "πριν 9,2 δισ. έτη", "label": "Σχηματισμός Ήλιου", "title": "Ένα άστρο στη σειρά του", "text": "Από ένα μοριακό νέφος στον βραχίονα του Γαλαξία γεννήθηκε ο Ήλιος, μαζί με τον δίσκο σκόνης που έγινε οι πλανήτες. Η ηλικία του μετριέται με ραδιοϊσότοπα σε μετεωρίτες: 4,567 δισεκατομμύρια χρόνια.", "badge": "Επιβεβαιωμένο"}, {"time": "πριν 4,5 δισ. έτη", "label": "Η Γη", "title": "Ένας υγρός πλανήτης", "text": "Η Γη σχηματίστηκε από συγκρούσεις πλανητικών εμβρύων. Μια τεράστια σύγκρουση δημιούργησε τη Σελήνη. Η ψύξη του φλοιού και η υγρή θάλασσα έδωσαν τις προϋποθέσεις για χημεία της ζωής.", "badge": "Επιβεβαιωμένο"}, {"time": "πριν 3,8–3,5 δισ. έτη", "label": "Πρώτη ζωή", "title": "Η ζωή εμφανίζεται", "text": "Τα παλαιότερα απολιθώματα μικροβίων χρονολογούνται περίπου 3,5 δισεκατομμύρια χρόνια πίσω. Τα στρωματόλιθα και τα χημικά ίχνη δείχνουν ότι η ζωή ήταν παρούσα πολύ νωρίς στην ιστορία της Γης.", "badge": "Ισχυρές ενδείξεις"}, {"time": "σήμερα", "label": "Εμείς", "title": "Το σύμπαν παρατηρεί τον εαυτό του", "text": "Από τη Γη, τα τηλεσκόπια βλέπουν φως που ταξίδεψε 13,8 δισεκατομμύρια χρόνια. Κάθε παρατήρηση είναι και μια ματιά στο παρελθόν — και η ακτινοβολία υποβάθρου είναι το «απολίθωμα» της Μεγάλης Έκρηξης.", "badge": "Παρατηρημένο"}, {"time": "σε ~5 δισ. έτη", "label": "Τέλος του Ήλιου", "title": "Από γίγαντας σε λευκό νάνο", "text": "Ο Ήλιος θα διογκωθεί σε ερυθρό γίγαντα, θα αποβάλει τα εξωτερικά του στρώματα ως πλανητικό νεφέλωμα και θα αφήσει έναν λευκό νάνο που θα κρυώσει για δισεκατομμύρια χρόνια.", "badge": "Πρόβλεψη μοντέλου"}, {"time": "σε 10¹⁴+ έτη", "label": "Σκοτεινή εποχή", "title": "Τα τελευταία άστρα", "text": "Αν η σκοτεινή ενέργεια συνεχίσει να επιταχύνει τη διαστολή, οι γαλαξίες θα απομακρυνθούν, τα άστρα θα σβήσουν και το σύμπαν θα γίνει σκοτεινό και ψυχρό. Είναι υπόθεση που εξαρτάται από τη φύση της σκοτεινής ενέργειας.", "badge": "Υπόθεση"}];</script>
+
+  <script>window.UE_FACTS = [{"text": "Μια ημέρα στην Αφροδίτη διαρκεί περισσότερο από το έτος της: 243 γήινες ημέρες περιστροφής έναντι 225 ημερών τροχιάς.", "tag": "Ήξερες ότι;"}, {"text": "Το φως του Ήλιου χρειάζεται περίπου 8 λεπτά και 20 δευτερόλεπτα για να φτάσει στη Γη.", "tag": "Ήξερες ότι;"}, {"text": "Ο Δίας έχει τόσο μεγάλη μάζα που το κέντρο του βρίσκεται υπό πίεση εκατομμυρίων ατμοσφαιρών — το υδρογόνο γίνεται μεταλλικό.", "tag": "Ήξερες ότι;"}, {"text": "Ένα κουταλάκι ύλης από αστέρα νετρονίων θα ζύγιζε περίπου ένα δισεκατομμύριο τόνους.", "tag": "Ήξερες ότι;"}, {"text": "Ο Γαλαξίας μας συγκρούεται βαρυτικά με την Ανδρομέδα και σε περίπου 4,5 δισεκατομμύρια χρόνια θα ενωθούν.", "tag": "Ήξερες ότι;"}, {"text": "Η πρώτη εικόνα ορίζοντα γεγονότων μαύρης τρύπας (M87*) δημοσιεύτηκε το 2019 από το Event Horizon Telescope.", "tag": "Ήξερες ότι;"}, {"text": "Το Voyager 1 είναι το πιο απομακρυσμένο ανθρώπινο αντικείμενο — βρίσκεται πάνω από 24 δισεκατομμύρια χιλιόμετρα μακριά.", "tag": "Ήξερες ότι;"}, {"text": "Το σύμπαν διαστέλλεται, αλλά οι γαλαξίες δεν «απομακρύνονται» μέσα στον χώρο: ο ίδιος ο χώρος ανάμεσά τους μεγαλώνει.", "tag": "Ήξερες ότι;"}, {"text": "Η σκοτεινή ενέργεια αποτελεί περίπου το 68% της ενεργειακής πυκνότητας του σύμπαντος — και δεν γνωρίζουμε τι είναι.", "tag": "Ανοιχτό ερώτημα"}, {"text": "Στον Κρόνο, οι άνεμοι φτάνουν τα 1.800 χλμ./ώρα — ταχύτεροι από οποιονδήποτε άνεμο στη Γη.", "tag": "Ήξερες ότι;"}, {"text": "Ο Ερμής έχει πάγο σε κρατήρες κοντά στους πόλους του, όπου το ηλιακό φως δεν φτάνει ποτέ.", "tag": "Ήξερες ότι;"}, {"text": "Οι Πλειάδες είναι ένα αστρικό σμήνος ηλικίας μόλις 100 εκατομμυρίων ετών — έφηβοι σε κοσμική κλίμακα.", "tag": "Ήξερες ότι;"}, {"text": "Η ακτινοβολία υποβάθρου των μικροκυμάτων είναι το πιο παλιό φως που μπορούμε να δούμε: 380.000 χρόνια μετά τη Μεγάλη Έκρηξη.", "tag": "Ήξερες ότι;"}, {"text": "Ο Διεθνής Διαστημικός Σταθμός ταξιδεύει με 28.000 χλμ./ώρα και κάνει μια περιστροφή γύρω από τη Γη σε 90 λεπτά.", "tag": "Ήξερες ότι;"}, {"text": "Το James Webb παρατηρεί στο υπέρυθρο, γι' αυτό μπορεί να δει μέσα από σκόνη και πολύ μακρινούς γαλαξίες.", "tag": "Ήξερες ότι;"}, {"text": "Οι περισσότεροι εξωπλανήτες δεν «βλέπονται» απευθείας: ανιχνεύονται από την ελάχιστη μείωση της φωτεινότητας του άστρου τους.", "tag": "Ήξερες ότι;"}, {"text": "Το ηλιακό στέμμα είναι εκατοντάδες φορές θερμότερο από την επιφάνεια του Ήλιου — ένα πρόβλημα που λέγεται «coronal heating problem».", "tag": "Ανοιχτό ερώτημα"}, {"text": "Ο Ουρανός περιστρέφεται «ξαπλωμένος»: ο άξονάς του έχει κλίση περίπου 98 μοιρών.", "tag": "Ήξερες ότι;"}, {"text": "Σε ένα κυβικό μέτρο διαστήματος υπάρχουν κατά μέσο όρο λιγότερα από ένα άτομα — το «κενό» είναι ο κανόνας.", "tag": "Ήξερες ότι;"}, {"text": "Η Μεγάλη Έκρηξη δεν ήταν έκρηξη μέσα στον χώρο: ήταν η αρχή της διαστολής του ίδιου του χώρου.", "tag": "Συχνή παρανόηση"}];</script>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+            <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1f)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2f)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1f" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2f" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+            <span class="brand__text"><span class="brand__name">Universe</span><span class="brand__sub">Explorer</span></span>
+          </a>
+          <p>Μια διαδραστική πλατφόρμα εξερεύνησης του σύμπαντος: πλανήτες, άστρα, γαλαξίες, μαύρες τρύπες και τα μεγάλα ερωτήματα που ακόμη περιμένουν απάντηση.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Εξερεύνηση</h4>
+          <ul>
+            <li><a href="solar-system.html">Ηλιακό Σύστημα</a></li>
+            <li><a href="stars.html">Άστρα &amp; Αστρική Εξέλιξη</a></li>
+            <li><a href="galaxies.html">Γαλαξίες</a></li>
+            <li><a href="black-holes.html">Μαύρες Τρύπες</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ανακάλυψε</h4>
+          <ul>
+            <li><a href="exploration.html">Εξερεύνηση του Διαστήματος</a></li>
+            <li><a href="life.html">Ζωή πέρα από τη Γη</a></li>
+            <li><a href="mysteries.html">Τα Μεγάλα Μυστήρια</a></li>
+            <li><a href="quiz.html">Κουίζ Γνώσεων</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Σχετικά</h4>
+          <ul>
+            <li><a href="index.html#journey">Οι ενότητες</a></li>
+            <li><a href="index.html#timeline">Χρονολόγιο σύμπαντος</a></li>
+            <li><a href="solar-system.html#orrery">Διαδραστικό ηλιακό σύστημα</a></li>
+            <li><a href="exploration.html#credits">Πηγές εικόνων</a></li>
+            <li><a href="privacy.html">Απόρρητο &amp; χρήση AI</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-disclosure">
+        <p><strong>Διαφάνεια AI:</strong> Το κείμενο, η σχεδίαση και ο κώδικας της ιστοσελίδας δημιουργήθηκαν με τη βοήθεια συστημάτων τεχνητής νοημοσύνης (AI). Ο ψηφιακός βοηθός στο κουμπί συνομιλίας είναι επίσης σύστημα AI, όχι άνθρωπος, και οι απαντήσεις του μπορεί να περιέχουν ανακρίβειες. Το περιεχόμενο έχει εκπαιδευτικό χαρακτήρα και δεν αποτελεί επαγγελματική συμβουλή.</p>
+        <p><strong>Εικόνες &amp; ανεξαρτησία:</strong> Οι εικόνες προέρχονται από δημόσια αρχεία της NASA, ESA και STScI και χρησιμοποιούνται με αναφορά πηγής για εκπαιδευτικούς σκοπούς. Η ιστοσελίδα είναι ανεξάρτητο εκπαιδευτικό project και δεν συνδέεται ούτε εγκρίνεται από τη NASA, την ESA ή άλλον οργανισμό. <a href="privacy.html">Απόρρητο &amp; χρήση AI</a></p>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span class="js-year">2026</span> Universe Explorer · Εκπαιδευτικό project αστρονομίας</p>
+        <p class="credits">Χωρίς διαφημίσεις και χωρίς εργαλεία παρακολούθησης (analytics).</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="search" id="search" role="dialog" aria-modal="true" aria-label="Αναζήτηση στο Universe Explorer" aria-hidden="true">
+    <div class="search__panel">
+      <div class="search__bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <label class="sr-only" for="searchInput">Αναζήτηση πλανητών, άστρων, γαλαξιών, αποστολών</label>
+        <input class="search__input" id="searchInput" type="search" placeholder="Αναζήτησε πλανήτη, άστρο, γαλαξία, αποστολή…" autocomplete="off" spellcheck="false">
+        <button type="button" class="search__close" aria-label="Κλείσιμο αναζήτησης">Esc</button>
+      </div>
+      <div class="search__body" id="searchResults"></div>
+      <div class="search__foot">
+        <span>Πλοήγηση με <kbd>↑</kbd> <kbd>↓</kbd> · άνοιγμα με <kbd>Enter</kbd></span>
+        <span><kbd>/</kbd> ή <kbd>Ctrl</kbd>+<kbd>K</kbd> για γρήγορη αναζήτηση</span>
+      </div>
+    </div>
+  </div>
+  <div class="music" id="musicPlayer" aria-label="Ατμοσφαιρική μουσική" aria-hidden="true">
+    <div class="music__head">
+      <span class="music__label">Ambient · Cosmic Drift</span>
+      <span class="music__eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <button type="button" class="search__close js-music-close" aria-label="Κλείσιμο μουσικής">✕</button>
+    </div>
+    <p class="music__track">Ταξίδι στο άπειρο</p>
+    <div class="music__row">
+      <button type="button" class="music__play" aria-pressed="false" aria-label="Αναπαραγωγή μουσικής">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      </button>
+      <div class="music__vol">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M16 9a4.5 4.5 0 0 1 0 6"/></svg>
+        <label class="sr-only" for="musicVolume">Ένταση μουσικής</label>
+        <input type="range" id="musicVolume" min="0" max="100" value="45">
+      </div>
+    </div>
+    <p class="music__note">Ατμοσφαιρικός ήχος συνθεμένος στη στιγμή. Δεν ξεκινά ποτέ αυτόματα — μόνο με τη δική σου επιλογή.</p>
+  </div>
+  <button type="button" class="music-fab" aria-controls="musicPlayer" aria-label="Άνοιγμα μουσικής">
+    <span class="music-fab__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.4"/><circle cx="17.5" cy="16" r="2.4"/></svg></span>
+    <span class="music-fab__label">Μουσική</span>
+  </button>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/search-data.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/music.js" defer></script>
+  <script src="assets/js/interactive.js" defer></script>
+  <div class="ai-note" role="note">
+    <span class="ai-note__badge">AI</span>
+    <span class="ai-note__text">Ψηφιακός βοηθός AI — όχι άνθρωπος</span>
+  </div>
+  <!-- ==== Chatling chatbot — αντικαταστήστε μόνο το chatbotId αν αλλάξει το bot ==== -->
+  <script>
+  window.chtlConfig = {
+      chatbotId: "3978654878"
+  }
+  </script>
+  <script
+      async
+      data-id="3978654878"
+      id="chtl-script"
+      type="text/javascript"
+      src="https://chatling.ai/js/embed.js">
+  </script>
+  <!-- ==== τέλος Chatling embed ==== -->
+</body>
+</html>

@@ -1,0 +1,268 @@
+{
+ "hero-nebula": {
+  "nasa_id": "carina_nebula",
+  "credit": "JWST Cosmic Cliffs, Carina Nebula (NASA/ESA/CSA/STScI)",
+  "width": 1600,
+  "height": 926,
+  "brightness": 79.2
+ },
+ "stars-pillars": {
+  "nasa_id": "GSFC_20171208_Archive_e000842",
+  "credit": "Pillars of Creation, Hubble (NASA/ESA/STScI)",
+  "width": 1600,
+  "height": 1499,
+  "brightness": 43.5
+ },
+ "stars-casA": {
+  "nasa_id": "GSFC_20171208_Archive_e002183",
+  "credit": "Cassiopeia A supernova remnant (NASA/CXC/SAO)",
+  "width": 1600,
+  "height": 1211,
+  "brightness": 52.6
+ },
+ "stars-tycho": {
+  "nasa_id": "PIA11435",
+  "credit": "Tycho supernova remnant (NASA/CXC/SAO)",
+  "width": 943,
+  "height": 945,
+  "brightness": 29.9
+ },
+ "stars-orion": {
+  "nasa_id": "PIA25434",
+  "credit": "Orion Nebula in infrared (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 1353,
+  "brightness": 34.6
+ },
+ "stars-pleiades": {
+  "nasa_id": "PIA09262",
+  "credit": "Pleiades star cluster (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 1600,
+  "brightness": 72.3
+ },
+ "stars-sun": {
+  "nasa_id": "GSFC_20171208_Archive_e001831",
+  "credit": "Sun's corona, SDO (NASA/SDO)",
+  "width": 1600,
+  "height": 1542,
+  "brightness": 25.2
+ },
+ "stars-betelgeuse": {
+  "nasa_id": "PIA16680",
+  "credit": "Betelgeuse environment (NASA/JPL-Caltech)",
+  "width": 625,
+  "height": 643,
+  "brightness": 29.6
+ },
+ "stars-whitedwarf": {
+  "nasa_id": "PIA22084",
+  "credit": "Polluted white dwarf, artist concept (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 900,
+  "brightness": 35.4
+ },
+ "galaxy-andromeda": {
+  "nasa_id": "GSFC_20171208_Archive_e000839",
+  "credit": "Andromeda galaxy panorama, Hubble (NASA/ESA/STScI)",
+  "width": 1165,
+  "height": 361,
+  "brightness": 88.3
+ },
+ "galaxy-antennae": {
+  "nasa_id": "PIA13316",
+  "credit": "Antennae galaxies (NASA/ESA/STScI)",
+  "width": 1600,
+  "height": 1625,
+  "brightness": 41.5
+ },
+ "galaxy-whirlpool": {
+  "nasa_id": "GSFC_20171208_Archive_e001925",
+  "credit": "Whirlpool galaxy M51, Hubble (NASA/ESA/STScI)",
+  "width": 1425,
+  "height": 1920,
+  "brightness": 87.9
+ },
+ "galaxy-sombrero": {
+  "nasa_id": "PIA15426",
+  "credit": "Sombrero galaxy (NASA/JPL-Caltech)",
+  "width": 1576,
+  "height": 1920,
+  "brightness": 42.1
+ },
+ "galaxy-milkyway": {
+  "nasa_id": "PIA03653",
+  "credit": "Milky Way center (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 1153,
+  "brightness": 51.5
+ },
+ "galaxy-deepfield": {
+  "nasa_id": "PIA12110",
+  "credit": "Hubble Deep Field (NASA/ESA/STScI)",
+  "width": 1600,
+  "height": 1643,
+  "brightness": 32.8
+ },
+ "bh-jet": {
+  "nasa_id": "PIA22085",
+  "credit": "Black hole with jet, artist concept (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 900,
+  "brightness": 66.3
+ },
+ "bh-m87": {
+  "nasa_id": "PIA23122",
+  "credit": "Messier 87 galaxy, Spitzer (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 900,
+  "brightness": 24.9
+ },
+ "planet-mercury": {
+  "nasa_id": "PIA19419",
+  "credit": "Mercury enhanced color, MESSENGER (NASA/JHUAPL/Carnegie)",
+  "width": 1600,
+  "height": 1600,
+  "brightness": 86.7
+ },
+ "planet-venus": {
+  "nasa_id": "PIA00252",
+  "credit": "Venus global view (NASA/JPL)",
+  "width": 1600,
+  "height": 1600,
+  "brightness": 68.2
+ },
+ "planet-earth": {
+  "nasa_id": "PIA18033",
+  "credit": "Earth (NASA)",
+  "width": 1600,
+  "height": 1600,
+  "brightness": 70.1
+ },
+ "planet-mars": {
+  "nasa_id": "PIA02653",
+  "credit": "Mars (NASA/JPL)",
+  "width": 1600,
+  "height": 1600,
+  "brightness": 77.0
+ },
+ "planet-jupiter": {
+  "nasa_id": "PIA01594",
+  "credit": "Jupiter full disk, Hubble (NASA/ESA)",
+  "width": 718,
+  "height": 716,
+  "brightness": 84.1
+ },
+ "planet-saturn": {
+  "nasa_id": "PIA06193",
+  "credit": "Saturn portrait, Cassini (NASA/JPL/Space Science Institute)",
+  "width": 1600,
+  "height": 818,
+  "brightness": 27.4
+ },
+ "planet-uranus": {
+  "nasa_id": "PIA18182",
+  "credit": "Uranus, Voyager 2 (NASA/JPL)",
+  "width": 1600,
+  "height": 1600,
+  "brightness": 98.0
+ },
+ "planet-neptune": {
+  "nasa_id": "PIA02210",
+  "credit": "Neptune, Voyager 2 (NASA/JPL)",
+  "width": 1000,
+  "height": 1000,
+  "brightness": 16.0
+ },
+ "planet-moon": {
+  "nasa_id": "as11-44-6667",
+  "credit": "Full Moon from Apollo 11 (NASA)",
+  "width": 1600,
+  "height": 1608,
+  "brightness": 69.2
+ },
+ "exploration-apollo": {
+  "nasa_id": "as11-40-5875",
+  "credit": "Apollo 11 astronaut on the Moon (NASA)",
+  "width": 1600,
+  "height": 1655,
+  "brightness": 50.3
+ },
+ "exploration-voyager": {
+  "nasa_id": "PIA14111",
+  "credit": "Voyager spacecraft, artist concept (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 1200,
+  "brightness": 29.0
+ },
+ "exploration-jwst": {
+  "nasa_id": "by-the-dozen-nasas-james-webb-space-telescope-mirrors_23938941370_o",
+  "credit": "JWST mirrors (NASA/Desiree Stover)",
+  "width": 1076,
+  "height": 717,
+  "brightness": 113.0
+ },
+ "exploration-iss": {
+  "nasa_id": "0701891",
+  "credit": "International Space Station above Earth (NASA)",
+  "width": 1600,
+  "height": 1064,
+  "brightness": 102.0
+ },
+ "exploration-earthrise": {
+  "nasa_id": "GSFC_20171208_Archive_e000496",
+  "credit": "Earthrise, Apollo 8 (NASA)",
+  "width": 640,
+  "height": 640,
+  "brightness": 31.1
+ },
+ "life-trappist": {
+  "nasa_id": "PIA21751",
+  "credit": "TRAPPIST-1 system, artist concept (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 900,
+  "brightness": 41.1
+ },
+ "life-planets": {
+  "nasa_id": "PIA24371",
+  "credit": "TRAPPIST-1 compared to Solar System (NASA/JPL-Caltech)",
+  "width": 1600,
+  "height": 900,
+  "brightness": 30.5
+ },
+ "comet": {
+  "nasa_id": "PIA18867",
+  "credit": "Comet 67P horizon, Rosetta (ESA/Rosetta/NAVCAM)",
+  "width": 1024,
+  "height": 1024,
+  "brightness": 72.1
+ },
+ "asteroid": {
+  "nasa_id": "PIA24101",
+  "credit": "Asteroid Bennu particle ejection (NASA/Goddard/UA)",
+  "width": 1280,
+  "height": 720,
+  "brightness": 2.8
+ },
+ "nebula-horsehead": {
+  "nasa_id": "PIA04215",
+  "credit": "Horsehead Nebula (NASA/JPL-Caltech)",
+  "width": 853,
+  "height": 620,
+  "brightness": 75.7
+ },
+ "planet-saturn2": {
+  "nasa_id": "PIA17218",
+  "credit": "Saturn, Cassini farewell (NASA/JPL-Caltech/SSI)",
+  "width": 1600,
+  "height": 667,
+  "brightness": 5.9
+ },
+ "earthrise": {
+  "nasa_id": "GSFC_20171208_Archive_e001279",
+  "credit": "Earthrise (NASA)",
+  "width": 1600,
+  "height": 900,
+  "brightness": 14.4
+ }
+}

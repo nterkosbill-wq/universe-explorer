@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Μαύρες Τρύπες — Universe Explorer</title>
+  <meta name="description" content="Μια μαύρη τρύπα είναι μια περιοχή του χώρου όπου η βαρύτητα είναι τόσο ισχυρή που τίποτα —ούτε το φως— δεν μπορεί να ξεφύγει. Δεν είναι «τρύπα» με την καθημερινή έννοια, αλλά ένα α">
+  <meta name="theme-color" content="#04030f">
+  <meta property="og:title" content="Μαύρες Τρύπες — Universe Explorer">
+  <meta property="og:description" content="Μια μαύρη τρύπα είναι μια περιοχή του χώρου όπου η βαρύτητα είναι τόσο ισχυρή που τίποτα —ούτε το φως— δεν μπορεί να ξεφύγει. Δεν είναι «τρύπα» με την καθημερινή έννοια, αλλά ένα α">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body class="page-interior">
+  <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="page-veil" aria-hidden="true"></div>
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__orbit"><span></span><span></span><span></span><i></i></div>
+    <p class="preloader__text">Ευθυγράμμιση με τα άστρα</p>
+    <div class="preloader__bar"><i></i></div>
+  </div>
+
+  <div class="space-bg" aria-hidden="true">
+    <canvas id="starfield"></canvas>
+    <div class="space-bg__nebula"></div>
+    <div class="space-bg__nebula space-bg__nebula--two"></div>
+    <div class="space-bg__grain"></div>
+  </div>
+  <header class="site-header" id="siteHeader">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1h)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2h)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1h" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2h" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+        <span class="brand__text">
+          <span class="brand__name">Universe</span>
+          <span class="brand__sub">Explorer</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Κύρια πλοήγηση">
+        <ul>
+          <li><a href="index.html">Αρχική</a></li>
+          <li><a href="solar-system.html">Ηλιακό Σύστημα</a></li>
+          <li><a href="stars.html">Άστρα</a></li>
+          <li><a href="galaxies.html">Γαλαξίες</a></li>
+          <li><a href="black-holes.html" aria-current="page">Μαύρες Τρύπες</a></li>
+          <li><a href="exploration.html">Εξερεύνηση</a></li>
+          <li><a href="life.html">Ζωή στο Σύμπαν</a></li>
+          <li><a href="mysteries.html">Μυστήρια</a></li>
+          <li><a href="quiz.html">Κουίζ</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <button type="button" class="icon-btn js-search-open" aria-label="Αναζήτηση" title="Αναζήτηση (/)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+        <button type="button" class="icon-btn js-music-toggle" aria-label="Μουσική" aria-controls="musicPlayer" title="Μουσική"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/></svg></button>
+        <button type="button" class="icon-btn nav-toggle" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" aria-label="Μενού πλοήγησης">
+    <div class="mobile-nav__top">
+      <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1m)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2m)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1m" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2m" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+        <span class="brand__text"><span class="brand__name">Universe</span><span class="brand__sub">Explorer</span></span>
+      </a>
+      <button type="button" class="icon-btn js-nav-close" aria-label="Κλείσιμο μενού"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <ul class="mobile-nav__list">
+          <li><a href="index.html"><span>01</span>Αρχική</a></li>
+          <li><a href="solar-system.html"><span>02</span>Ηλιακό Σύστημα</a></li>
+          <li><a href="stars.html"><span>03</span>Άστρα</a></li>
+          <li><a href="galaxies.html"><span>04</span>Γαλαξίες</a></li>
+          <li><a href="black-holes.html" aria-current="page"><span>05</span>Μαύρες Τρύπες</a></li>
+          <li><a href="exploration.html"><span>06</span>Εξερεύνηση</a></li>
+          <li><a href="life.html"><span>07</span>Ζωή στο Σύμπαν</a></li>
+          <li><a href="mysteries.html"><span>08</span>Μυστήρια</a></li>
+          <li><a href="quiz.html"><span>09</span>Κουίζ</a></li>
+    </ul>
+    <div class="mobile-nav__foot">
+      <p>Ένα ταξίδι στα βάθη του σύμπαντος, με επιστημονικά τεκμηριωμένο περιεχόμενο στα ελληνικά.</p>
+    </div>
+  </div>
+
+  <main id="main">
+  <section class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('assets/img/bh-m87.jpg')"></div>
+    <div class="container page-hero__inner">
+      <div>
+        <nav class="breadcrumb" aria-label="Διαδρομή"><a href="index.html">Αρχική</a><span aria-hidden="true">/</span><a href="black-holes.html">Μαύρες Τρύπες</a></nav>
+        <span class="page-hero__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.2c3.4 1.6 5.2 4.7 5.2 8.8M12 20.8c-3.4-1.6-5.2-4.7-5.2-8.8"/><ellipse cx="12" cy="12" rx="9.4" ry="3.2" transform="rotate(-16 12 12)"/></svg></span>
+        <p class="eyebrow">Εκεί που ο χρόνος λυγίζει</p>
+        <h1>Μαύρες Τρύπες</h1>
+        <p class="page-hero__lead">Μια μαύρη τρύπα είναι μια περιοχή του χώρου όπου η βαρύτητα είναι τόσο ισχυρή που τίποτα —ούτε το φως— δεν μπορεί να ξεφύγει. Δεν είναι «τρύπα» με την καθημερινή έννοια, αλλά ένα ακραίο βαρυτικό αντικείμενο που γεννιέται από την κατάρρευση ύλης.</p>
+      </div>
+      <div class="page-hero__side"><span>Μάζα M87*</span><strong>6,5 δισ. ηλιακές</strong></div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="stat-band reveal"><div class="stat"><span class="stat__value">6,5 δισ. ηλιακές</span><span class="stat__label">Μάζα M87*</span></div><div class="stat"><span class="stat__value">4 εκατ. ηλιακές</span><span class="stat__label">Μάζα Τοξότη A*</span></div><div class="stat"><span class="stat__value">≈ 3 χλμ.</span><span class="stat__label">Ακτίνα Schwarzschild Ήλιου</span></div><div class="stat"><span class="stat__value">2019</span><span class="stat__label">Πρώτη εικόνα</span></div></div>
+    </div>
+  </section>
+  <div class="container article-layout">
+    <div class="article">
+      <section class="block reveal" id="ti_einai"><h2>Τι είναι μια μαύρη τρύπα</h2>
+<div class="prose"><p>Η μαύρη τρύπα περιγράφεται από τη Γενική Θεωρία της Σχετικότητας του Einstein. Η μάζα της παραμορφώνει τον χωροχρόνο γύρω της τόσο έντονα που οι τροχιές του φωτός κλείνονται προς τα μέσα. Το όριο από το οποίο δεν επιστρέφει τίποτα ονομάζεται <strong>ορίζοντας γεγονότων</strong>.</p>
+         <p>Η «ακτίνα» αυτού του ορίου, η ακτίνα Schwarzschild, εξαρτάται μόνο από τη μάζα: για τη Γη θα ήταν 9 χιλιοστά, για τον Ήλιο περίπου 3 χιλιόμετρα. Μια μαύρη τρύπα δεν «ρουφάει» τα πάντα γύρω της: αν βρισκόμασταν σε σταθερή τροχιά μακριά από τον ορίζοντα, θα περιφερόμασταν κανονικά, σαν γύρω από οποιοδήποτε άλλο σώμα ίσης μάζας.</p>
+         <p>Παρατηρούμε μαύρες τρύπες έμμεσα: από την ακτινοβολία της ύλης που θερμαίνεται καθώς στροβιλίζεται γύρω τους, από βαρυτικά κύματα κατά τις συγχωνεύσεις τους, και από τις τροχιές άστρων γύρω από αόρατα κέντρα βάρους.</p></div>
+      </section>      <section class="block reveal" id="dimiourgia"><h2>Πώς δημιουργούνται</h2>
+<div class="prose"><p>Οι <strong>αστρικές μαύρες τρύπες</strong> σχηματίζονται όταν ένα πολύ μεγάλο άστρο (πάνω από 20–25 ηλιακές μάζες) καταρρέει στο τέλος της ζωής του. Ο πυρήνας του συμπιέζεται τόσο ώστε καμία γνωστή δύναμη δεν μπορεί να τον σταματήσει. Το αποτέλεσμα είναι μια μαύρη τρύπα λίγων ηλιακών μαζών.</p>
+         <p>Οι <strong>υπερμεγέθεις μαύρες τρύπες</strong> βρίσκονται στα κέντρα γαλαξιών και έχουν μάζες από εκατομμύρια έως δισεκατομμύρια ηλιακές. Το πώς σχηματίστηκαν παραμένει ανοιχτό ερώτημα: πιθανώς από τη συγχώνευση μικρότερων μαύρων τρυπών ή από την κατάρρευση τεράστιων νεφών αερίου στο πρώιμο σύμπαν. Οι παρατηρήσεις του James Webb δείχνουν ύποπτα μεγάλες μαύρες τρύπες πολύ νωρίς στην ιστορία του σύμπαντος.</p>
+         <p>Υπάρχει και η θεωρητική κατηγορία των <strong>αρχέγονων μαύρων τρυπών</strong>, που θα μπορούσαν να σχηματίστηκαν αμέσως μετά τη Μεγάλη Έκρηξη από διακυμάνσεις πυκνότητας. Δεν έχει επιβεβαιωθεί καμία.</p></div>
+      </section>      <section class="block reveal" id="orizontas"><h2>Ο ορίζοντας γεγονότων</h2>
+<div class="prose"><p>Μετακίνησε τον δείκτη και δες πώς ο χρόνος επιβραδύνεται κοντά σε μια μη περιστρεφόμενη μαύρη τρύπα. Η τιμή δείχνει πόσο «πιο αργά» περνά ο χρόνος για έναν παρατηρητή σε τροχιά, σε σχέση με κάποιον μακριά.</p></div><div class="calc">
+          <div class="calc__slider">
+            <label class="sr-only" for="bhSlider">Απόσταση από τη μαύρη τρύπα, σε ακτίνες Schwarzschild</label>
+            <input type="range" id="bhSlider" min="1.05" max="20" step="0.05" value="3">
+            <div class="calc__ticks"><span>1 rₛ — ορίζοντας</span><span>10 rₛ</span><span>20 rₛ</span></div>
+            <div class="calc__readout">
+              <span>Απόσταση</span>
+              <strong class="js-bh-dist">3,00 rₛ</strong>
+            </div>
+          </div>
+          <dl class="calc__results">
+            <div class="calc__result"><dt>Χρόνος που περνά</dt><dd class="js-bh-hour">49 λεπτά 29 δευτ.</dd></div>
+            <div class="calc__result"><dt>Συντελεστής διαστολής</dt><dd class="js-bh-dilation">0,816</dd></div>
+            <div class="calc__result"><dt>Ταχύτητα τροχιάς</dt><dd class="js-bh-orbit">0,50 c</dd></div>
+          </dl>
+          <p class="calc__note">Για έναν ρολόι σε τροχιά στην επιλεγμένη απόσταση, περνούν τόσα λεπτά όσα θα έδειχνε ένα ρολόι μακριά από τη μαύρη τρύπα μέσα σε μία ώρα. Η τιμή υπολογίζεται από τη μετρική Schwarzschild και αγνοεί την ταχύτητα της τροχιάς.</p>
+        </div>
+      </section>      <section class="block reveal" id="ti_xeroume"><h2>Τι γνωρίζουμε και τι όχι</h2>
+<div class="prose"><p>Οι μαύρες τρύπες είναι από τις πιο καλά ελεγμένες προβλέψεις της φυσικής. Έχουμε δει τον ορίζοντα γεγονότος του M87* και του Τοξότη A*· έχουμε ανιχνεύσει βαρυτικά κύματα από συγχωνεύσεις μαύρων τρυπών (LIGO/Virgo)· έχουμε μετρήσει τροχιές άστρων γύρω από το γαλαξιακό κέντρο.</p>
+         <p>Παραμένουν όμως βαθιά ερωτήματα: τι συμβαίνει στο εσωτερικό, όπου η σχετικότητα συναντά την κβαντομηχανική; Πώς λύνεται το «παράδοξο της πληροφορίας»; Οι μαύρες τρύπες εξατμίζονται μέσω της ακτινοβολίας Hawking — αλλά αυτό δεν έχει παρατηρηθεί ποτέ. Και δεν γνωρίζουμε αν υπάρχει πραγματικός «τοίχος» ή αν η πληροφορία χάνεται για πάντα.</p>
+         <p><span class="badge badge--open">Ανοιχτό ερώτημα</span> Η φύση της μοναδικότητας και η κβαντική βαρύτητα παραμένουν από τα μεγαλύτερα άλυτα προβλήματα της φυσικής.</p></div>
+      </section>      <section class="block reveal" id="eidi"><h2>Οι κατηγορίες μαύρων τρυπών</h2>
+<p class="lead">Από τα αστρικά κατάλοιπα μέχρι τους γίγαντες των γαλαξιακών κέντρων.</p><div class="grid grid--3"><article class="card">
+<div class="media media--wide media--bleed media--zoom"><img src="assets/img/bh-jet.jpg" alt="Αστρικές" decoding="async" loading="lazy"></div>
+<div class="card__body"><h3 class="card__title">Αστρικές</h3><p class="card__text">Μάζα 3–100 ηλιακές. Σχηματίζονται από την κατάρρευση μεγάλων άστρων. Εντοπίζονται συνήθως σε δυαδικά συστήματα, όπου «ρουφούν» ύλη από ένα συνοδό άστρο.</p><div class="card__meta"><span class="badge badge--confirmed">Επιβεβαιωμένο</span><span>3–100 M☉</span></div></div></article><article class="card">
+<div class="media media--wide media--bleed media--zoom"><img src="assets/img/stars-casA.jpg" alt="Ενδιάμεσες" decoding="async" loading="lazy"></div>
+<div class="card__body"><h3 class="card__title">Ενδιάμεσες</h3><p class="card__text">Μάζα 100–100.000 ηλιακές. Υποψήφιες έχουν εντοπιστεί σε σφαιρωτά σμήνη και σε κέντρα μικρών γαλαξιών, αλλά τα στοιχεία είναι ακόμη περιορισμένα.</p><div class="card__meta"><span class="badge badge--open">Υπό έρευνα</span><span>100–100.000 M☉</span></div></div></article><article class="card">
+<div class="media media--wide media--bleed media--zoom"><img src="assets/img/bh-m87.jpg" alt="Υπερμεγέθεις" decoding="async" loading="lazy"></div>
+<div class="card__body"><h3 class="card__title">Υπερμεγέθεις</h3><p class="card__text">Μάζα εκατομμύρια έως δισεκατομμύρια ηλιακές. Βρίσκονται στα κέντρα σχεδόν όλων των μεγάλων γαλαξιών. Η M87* και ο Τοξότης A* είναι τα πιο μελετημένα παραδείγματα.</p><div class="card__meta"><span class="badge badge--confirmed">Επιβεβαιωμένο</span><span>&gt; 1 εκατ. M☉</span></div></div></article></div>
+      </section>      <section class="block reveal" id="note-6">
+<div class="note note--unknown"><span class="note__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 8v4.6M12 16h.01"/></svg></span><div><p><strong>Προσοχή στις «θεωρίες»:</strong> οι μαύρες τρύπες δεν είναι πύλες σε άλλα σύμπαντα, ούτε «σκουπίδια» του χωροχρόνου. Οι δημοφιλείς εικόνες της επιστημονικής φαντασίας (σκουληκότρυπες, ταξίδια στον χρόνο μέσω τους) είναι υποθέσεις χωρίς παρατηρησιακή επιβεβαίωση. Αυτό που ξέρουμε με βεβαιότητα είναι η βαρυτική τους επίδραση και η ύπαρξη ορίζοντα γεγονότος.</p></div></div>
+      </section>
+    </div>
+    <aside class="toc" aria-label="Σε αυτή τη σελίδα"><span class="toc__label">Σε αυτή τη σελίδα</span><a href="#ti_einai">Τι είναι μια μαύρη τρύπα</a><a href="#dimiourgia">Πώς δημιουργούνται</a><a href="#orizontas">Ο ορίζοντας γεγονότων</a><a href="#ti_xeroume">Τι γνωρίζουμε και τι όχι</a><a href="#eidi">Οι κατηγορίες μαύρων τρυπών</a><a class="toc__cta" href="#main">↑ Επιστροφή στην κορυφή</a></aside>
+  </div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+            <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1f)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2f)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1f" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2f" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+            <span class="brand__text"><span class="brand__name">Universe</span><span class="brand__sub">Explorer</span></span>
+          </a>
+          <p>Μια διαδραστική πλατφόρμα εξερεύνησης του σύμπαντος: πλανήτες, άστρα, γαλαξίες, μαύρες τρύπες και τα μεγάλα ερωτήματα που ακόμη περιμένουν απάντηση.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Εξερεύνηση</h4>
+          <ul>
+            <li><a href="solar-system.html">Ηλιακό Σύστημα</a></li>
+            <li><a href="stars.html">Άστρα &amp; Αστρική Εξέλιξη</a></li>
+            <li><a href="galaxies.html">Γαλαξίες</a></li>
+            <li><a href="black-holes.html">Μαύρες Τρύπες</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ανακάλυψε</h4>
+          <ul>
+            <li><a href="exploration.html">Εξερεύνηση του Διαστήματος</a></li>
+            <li><a href="life.html">Ζωή πέρα από τη Γη</a></li>
+            <li><a href="mysteries.html">Τα Μεγάλα Μυστήρια</a></li>
+            <li><a href="quiz.html">Κουίζ Γνώσεων</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Σχετικά</h4>
+          <ul>
+            <li><a href="index.html#journey">Οι ενότητες</a></li>
+            <li><a href="index.html#timeline">Χρονολόγιο σύμπαντος</a></li>
+            <li><a href="solar-system.html#orrery">Διαδραστικό ηλιακό σύστημα</a></li>
+            <li><a href="exploration.html#credits">Πηγές εικόνων</a></li>
+            <li><a href="privacy.html">Απόρρητο &amp; χρήση AI</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-disclosure">
+        <p><strong>Διαφάνεια AI:</strong> Το κείμενο, η σχεδίαση και ο κώδικας της ιστοσελίδας δημιουργήθηκαν με τη βοήθεια συστημάτων τεχνητής νοημοσύνης (AI). Ο ψηφιακός βοηθός στο κουμπί συνομιλίας είναι επίσης σύστημα AI, όχι άνθρωπος, και οι απαντήσεις του μπορεί να περιέχουν ανακρίβειες. Το περιεχόμενο έχει εκπαιδευτικό χαρακτήρα και δεν αποτελεί επαγγελματική συμβουλή.</p>
+        <p><strong>Εικόνες &amp; ανεξαρτησία:</strong> Οι εικόνες προέρχονται από δημόσια αρχεία της NASA, ESA και STScI και χρησιμοποιούνται με αναφορά πηγής για εκπαιδευτικούς σκοπούς. Η ιστοσελίδα είναι ανεξάρτητο εκπαιδευτικό project και δεν συνδέεται ούτε εγκρίνεται από τη NASA, την ESA ή άλλον οργανισμό. <a href="privacy.html">Απόρρητο &amp; χρήση AI</a></p>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span class="js-year">2026</span> Universe Explorer · Εκπαιδευτικό project αστρονομίας</p>
+        <p class="credits">Χωρίς διαφημίσεις και χωρίς εργαλεία παρακολούθησης (analytics).</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="search" id="search" role="dialog" aria-modal="true" aria-label="Αναζήτηση στο Universe Explorer" aria-hidden="true">
+    <div class="search__panel">
+      <div class="search__bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <label class="sr-only" for="searchInput">Αναζήτηση πλανητών, άστρων, γαλαξιών, αποστολών</label>
+        <input class="search__input" id="searchInput" type="search" placeholder="Αναζήτησε πλανήτη, άστρο, γαλαξία, αποστολή…" autocomplete="off" spellcheck="false">
+        <button type="button" class="search__close" aria-label="Κλείσιμο αναζήτησης">Esc</button>
+      </div>
+      <div class="search__body" id="searchResults"></div>
+      <div class="search__foot">
+        <span>Πλοήγηση με <kbd>↑</kbd> <kbd>↓</kbd> · άνοιγμα με <kbd>Enter</kbd></span>
+        <span><kbd>/</kbd> ή <kbd>Ctrl</kbd>+<kbd>K</kbd> για γρήγορη αναζήτηση</span>
+      </div>
+    </div>
+  </div>
+  <div class="music" id="musicPlayer" aria-label="Ατμοσφαιρική μουσική" aria-hidden="true">
+    <div class="music__head">
+      <span class="music__label">Ambient · Cosmic Drift</span>
+      <span class="music__eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <button type="button" class="search__close js-music-close" aria-label="Κλείσιμο μουσικής">✕</button>
+    </div>
+    <p class="music__track">Ταξίδι στο άπειρο</p>
+    <div class="music__row">
+      <button type="button" class="music__play" aria-pressed="false" aria-label="Αναπαραγωγή μουσικής">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      </button>
+      <div class="music__vol">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M16 9a4.5 4.5 0 0 1 0 6"/></svg>
+        <label class="sr-only" for="musicVolume">Ένταση μουσικής</label>
+        <input type="range" id="musicVolume" min="0" max="100" value="45">
+      </div>
+    </div>
+    <p class="music__note">Ατμοσφαιρικός ήχος συνθεμένος στη στιγμή. Δεν ξεκινά ποτέ αυτόματα — μόνο με τη δική σου επιλογή.</p>
+  </div>
+  <button type="button" class="music-fab" aria-controls="musicPlayer" aria-label="Άνοιγμα μουσικής">
+    <span class="music-fab__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.4"/><circle cx="17.5" cy="16" r="2.4"/></svg></span>
+    <span class="music-fab__label">Μουσική</span>
+  </button>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/search-data.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/music.js" defer></script>
+  <script src="assets/js/interactive.js" defer></script>
+  <div class="ai-note" role="note">
+    <span class="ai-note__badge">AI</span>
+    <span class="ai-note__text">Ψηφιακός βοηθός AI — όχι άνθρωπος</span>
+  </div>
+  <!-- ==== Chatling chatbot — αντικαταστήστε μόνο το chatbotId αν αλλάξει το bot ==== -->
+  <script>
+  window.chtlConfig = {
+      chatbotId: "3978654878"
+  }
+  </script>
+  <script
+      async
+      data-id="3978654878"
+      id="chtl-script"
+      type="text/javascript"
+      src="https://chatling.ai/js/embed.js">
+  </script>
+  <!-- ==== τέλος Chatling embed ==== -->
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ήλιος — Universe Explorer</title>
+  <meta name="description" content="Ήλιος: Το 99,86% της μάζας του ηλιακού συστήματος. Η πηγή κάθε ενέργειας, κάθε εποχής και κάθε μορφής ζωής στη Γη.">
+  <meta name="theme-color" content="#04030f">
+  <meta property="og:title" content="Ήλιος — Universe Explorer">
+  <meta property="og:description" content="Ήλιος: Το 99,86% της μάζας του ηλιακού συστήματος. Η πηγή κάθε ενέργειας, κάθε εποχής και κάθε μορφής ζωής στη Γη.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body class="page-planet">
+  <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="page-veil" aria-hidden="true"></div>
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__orbit"><span></span><span></span><span></span><i></i></div>
+    <p class="preloader__text">Ευθυγράμμιση με τα άστρα</p>
+    <div class="preloader__bar"><i></i></div>
+  </div>
+
+  <div class="space-bg" aria-hidden="true">
+    <canvas id="starfield"></canvas>
+    <div class="space-bg__nebula"></div>
+    <div class="space-bg__nebula space-bg__nebula--two"></div>
+    <div class="space-bg__grain"></div>
+  </div>
+  <header class="site-header" id="siteHeader">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1h)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2h)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1h" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2h" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+        <span class="brand__text">
+          <span class="brand__name">Universe</span>
+          <span class="brand__sub">Explorer</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Κύρια πλοήγηση">
+        <ul>
+          <li><a href="index.html">Αρχική</a></li>
+          <li><a href="solar-system.html" aria-current="page">Ηλιακό Σύστημα</a></li>
+          <li><a href="stars.html">Άστρα</a></li>
+          <li><a href="galaxies.html">Γαλαξίες</a></li>
+          <li><a href="black-holes.html">Μαύρες Τρύπες</a></li>
+          <li><a href="exploration.html">Εξερεύνηση</a></li>
+          <li><a href="life.html">Ζωή στο Σύμπαν</a></li>
+          <li><a href="mysteries.html">Μυστήρια</a></li>
+          <li><a href="quiz.html">Κουίζ</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <button type="button" class="icon-btn js-search-open" aria-label="Αναζήτηση" title="Αναζήτηση (/)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+        <button type="button" class="icon-btn js-music-toggle" aria-label="Μουσική" aria-controls="musicPlayer" title="Μουσική"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/></svg></button>
+        <button type="button" class="icon-btn nav-toggle" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" aria-label="Μενού πλοήγησης">
+    <div class="mobile-nav__top">
+      <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1m)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2m)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1m" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2m" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+        <span class="brand__text"><span class="brand__name">Universe</span><span class="brand__sub">Explorer</span></span>
+      </a>
+      <button type="button" class="icon-btn js-nav-close" aria-label="Κλείσιμο μενού"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <ul class="mobile-nav__list">
+          <li><a href="index.html"><span>01</span>Αρχική</a></li>
+          <li><a href="solar-system.html" aria-current="page"><span>02</span>Ηλιακό Σύστημα</a></li>
+          <li><a href="stars.html"><span>03</span>Άστρα</a></li>
+          <li><a href="galaxies.html"><span>04</span>Γαλαξίες</a></li>
+          <li><a href="black-holes.html"><span>05</span>Μαύρες Τρύπες</a></li>
+          <li><a href="exploration.html"><span>06</span>Εξερεύνηση</a></li>
+          <li><a href="life.html"><span>07</span>Ζωή στο Σύμπαν</a></li>
+          <li><a href="mysteries.html"><span>08</span>Μυστήρια</a></li>
+          <li><a href="quiz.html"><span>09</span>Κουίζ</a></li>
+    </ul>
+    <div class="mobile-nav__foot">
+      <p>Ένα ταξίδι στα βάθη του σύμπαντος, με επιστημονικά τεκμηριωμένο περιεχόμενο στα ελληνικά.</p>
+    </div>
+  </div>
+
+  <main id="main">
+  <section class="body-hero">
+    <div class="body-hero__glow" aria-hidden="true"></div>
+    <div class="container body-hero__inner">
+      <div>
+        <nav class="breadcrumb" aria-label="Διαδρομή"><a href="index.html">Αρχική</a><span aria-hidden="true">/</span><a href="solar-system.html">Ηλιακό Σύστημα</a><span aria-hidden="true">/</span><a href="planet-sun.html">Ήλιος</a></nav>
+        <h1>Ήλιος</h1>
+        <p class="body-hero__sub">Sun · Κίτρινος νάνος (G2V)</p>
+        <p class="body-hero__lead">Το 99,86% της μάζας του ηλιακού συστήματος. Η πηγή κάθε ενέργειας, κάθε εποχής και κάθε μορφής ζωής στη Γη.</p>
+        <dl class="body-hero__facts"><div><dt>Διάμετρος</dt><dd>1.392.700 χλμ.</dd></div><div><dt>Μάζα</dt><dd>333.000 × Γη</dd></div><div><dt>Επιφάνεια</dt><dd>≈ 5.500 °C</dd></div><div><dt>Πυρήνας</dt><dd>≈ 15 εκατ. °C</dd></div><div><dt>Ηλικία</dt><dd>4,6 δισ. έτη</dd></div><div><dt>Απόσταση από Γη</dt><dd>149,6 εκατ. χλμ.</dd></div></dl>
+      </div>
+      <div class="body-visual">
+        <div class="body-visual__orb"><img src="assets/img/stars-sun.jpg" alt="Ήλιος" decoding="async" loading="lazy"></div>
+        <span class="body-visual__tag">Κίτρινος νάνος (G2V)</span>
+      </div>
+    </div>
+  </section>
+  <div class="container article-layout">
+    <div class="article">
+      <section class="block reveal" id="domi"><h2>Δομή: ένας πυρηνικός αντιδραστήρας</h2>
+<div class="prose">
+          <p>Ο Ήλιος δεν καίει — συντήκεται. Στον πυρήνα του, όπου η θερμοκρασία φτάνει τα 15 εκατομμύρια βαθμούς και η πίεση είναι 250 δισεκατομμύρια φορές η ατμοσφαιρική, πυρήνες υδρογόνου συγχωνεύονται σε ήλιο μέσω της αλυσίδας πρωτονίου-πρωτονίου. Η μάζα που «χάνεται» σε κάθε αντίδραση μετατρέπεται σε ενέργεια, σύμφωνα με την εξίσωση E = mc².</p>
+          <p>Η ενέργεια αυτή χρειάζεται χιλιάδες χρόνια για να φτάσει στην επιφάνεια, περνώντας διαδοχικά από τη ζώνη ακτινοβολίας και τη ζώνη μεταφοράς. Στη φωτόσφαιρα, την ορατή επιφάνεια, η θερμοκρασία πέφτει στους 5.500 °C και η ενέργεια εκπέμπεται ως φως. Πάνω από αυτήν απλώνεται η χρωμόσφαιρα και το στέμμα, που είναι εκατοντάδες φορές θερμότερο από την επιφάνεια — ένα από τα μεγάλα άλυτα προβλήματα της ηλιακής φυσικής.</p>
+        </div>
+      </section>      <section class="block reveal" id="drastiriotita"><h2>Ηλιακή δραστηριότητα και διαστημικός καιρός</h2>
+<div class="prose">
+          <p>Το μαγνητικό πεδίο του Ήλιου αναστρέφεται περίπου κάθε 11 χρόνια, οδηγώντας σε έναν κύκλο ηλιακών κηλίδων. Στα μέγιστα του κύκλου οι εκλάμψεις και οι στεμματικές εκπομπές μάζας γίνονται συχνότερες: δισεκατομμύρια τόνοι πλάσματος εκτοξεύονται στο διάστημα με ταχύτητες που ξεπερνούν τα 1.000 χλμ./δευτερόλεπτο.</p>
+          <p>Όταν μια τέτοια εκπομπή κατευθύνεται προς τη Γη, προκαλεί γεωμαγνητικές καταιγίδες, εντυπωσιακά σέλας σε χαμηλότερα γεωγραφικά πλάτη και κινδύνους για δορυφόρους, GPS και δίκτυα ηλεκτρικής ενέργειας. Η παρακολούθηση του «διαστημικού καιρού» είναι πλέον κρίσιμη υποδομή.</p>
+          <div class="note"><span class="badge badge--confirmed">Επιβεβαιωμένο</span> Η απόσταση Γης–Ηλίου ορίζει την αστρονομική μονάδα (1 AU = 149.597.870,7 χλμ.) και μετριέται με ραντάρ και τηλεσκόπια με ακρίβεια εκατοστών.</div>
+        </div>
+      </section>      <section class="block reveal" id="mellon"><h2>Το μέλλον του Ήλιου</h2>
+<div class="prose">
+          <p>Ο Ήλιος βρίσκεται στο μέσο της ζωής του. Σε περίπου 5 δισεκατομμύρια χρόνια θα εξαντλήσει το υδρογόνο του πυρήνα του και θα διογκωθεί σε ερυθρό γίγαντα, καταπίνοντας πιθανότατα τον Ερμή και την Αφροδίτη. Η Γη θα γίνει αφιλόξενη πολύ νωρίτερα, καθώς η λαμπρότητα του Ήλιου αυξάνεται σταδιακά κατά 1% κάθε 100 εκατομμύρια χρόνια.</p>
+          <p>Στο τέλος θα αποτινάξει τα εξωτερικά του στρώματα ως πλανητικό νεφέλωμα και θα αφήσει έναν λευκό νάνο στο μέγεθος της Γης — ένα απίστευτα πυκνό κατάλοιπο που θα ψύχεται για δεκάδες δισεκατομμύρια χρόνια.</p>
+        </div>
+      </section>
+    </div>
+    <aside class="toc" aria-label="Σε αυτή τη σελίδα"><span class="toc__label">Σε αυτή τη σελίδα</span><a href="#domi">Δομή: ένας πυρηνικός αντιδραστήρας</a><a href="#drastiriotita">Ηλιακή δραστηριότητα και διαστημικός καιρός</a><a href="#mellon">Το μέλλον του Ήλιου</a><a class="toc__cta" href="solar-system.html#orrery">Διαδραστικό μοντέλο</a></aside>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head reveal"><div><p class="eyebrow"><span class="dot"></span>Πέντε πράγματα</p><h2 class="h2">Ήξερες ότι…</h2></div><p class="lead">Μικρές λεπτομέρειες για τον Ήλιος που συχνά ξαφνιάζουν.</p></div><ul class="two-col-list reveal"><li>Το φως του Ήλιου χρειάζεται 8 λεπτά και 20 δευτερόλεπτα για να φτάσει στη Γη, αλλά η ενέργεια που το παράγει ταξίδεψε χιλιάδες χρόνια μέσα στο εσωτερικό του.</li><li>Ο Ήλιος περιστρέφεται γρηγορότερα στον ισημερινό (25 ημέρες) από ό,τι στους πόλους (35 ημέρες) — γι' αυτό το μαγνητικό του πεδίο είναι τόσο μπλεγμένο.</li><li>Η θερμοκρασία του στέμματος ξεπερνά το 1 εκατομμύριο βαθμούς, ενώ η επιφάνεια είναι μόλις 5.500 °C. Κανείς δεν ξέρει ακόμη με βεβαιότητα γιατί.</li><li>Κάθε δευτερόλεπτο ο Ήλιος μετατρέπει 4 εκατομμύρια τόνους μάζας σε ενέργεια.</li></ul>
+    </div>
+  </section>
+  <section class="section section--tight">
+    <div class="container">
+      <div class="planet-nav"><a class="link-arrow" href="planet-neptune.html">Ποσειδώνας<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7"/></svg></a><a class="chip" href="solar-system.html">Όλο το ηλιακό σύστημα</a><a class="link-arrow" href="planet-mercury.html">Ερμής<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+    </div>
+  </section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+            <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1f)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2f)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1f" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2f" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+            <span class="brand__text"><span class="brand__name">Universe</span><span class="brand__sub">Explorer</span></span>
+          </a>
+          <p>Μια διαδραστική πλατφόρμα εξερεύνησης του σύμπαντος: πλανήτες, άστρα, γαλαξίες, μαύρες τρύπες και τα μεγάλα ερωτήματα που ακόμη περιμένουν απάντηση.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Εξερεύνηση</h4>
+          <ul>
+            <li><a href="solar-system.html">Ηλιακό Σύστημα</a></li>
+            <li><a href="stars.html">Άστρα &amp; Αστρική Εξέλιξη</a></li>
+            <li><a href="galaxies.html">Γαλαξίες</a></li>
+            <li><a href="black-holes.html">Μαύρες Τρύπες</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ανακάλυψε</h4>
+          <ul>
+            <li><a href="exploration.html">Εξερεύνηση του Διαστήματος</a></li>
+            <li><a href="life.html">Ζωή πέρα από τη Γη</a></li>
+            <li><a href="mysteries.html">Τα Μεγάλα Μυστήρια</a></li>
+            <li><a href="quiz.html">Κουίζ Γνώσεων</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Σχετικά</h4>
+          <ul>
+            <li><a href="index.html#journey">Οι ενότητες</a></li>
+            <li><a href="index.html#timeline">Χρονολόγιο σύμπαντος</a></li>
+            <li><a href="solar-system.html#orrery">Διαδραστικό ηλιακό σύστημα</a></li>
+            <li><a href="exploration.html#credits">Πηγές εικόνων</a></li>
+            <li><a href="privacy.html">Απόρρητο &amp; χρήση AI</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-disclosure">
+        <p><strong>Διαφάνεια AI:</strong> Το κείμενο, η σχεδίαση και ο κώδικας της ιστοσελίδας δημιουργήθηκαν με τη βοήθεια συστημάτων τεχνητής νοημοσύνης (AI). Ο ψηφιακός βοηθός στο κουμπί συνομιλίας είναι επίσης σύστημα AI, όχι άνθρωπος, και οι απαντήσεις του μπορεί να περιέχουν ανακρίβειες. Το περιεχόμενο έχει εκπαιδευτικό χαρακτήρα και δεν αποτελεί επαγγελματική συμβουλή.</p>
+        <p><strong>Εικόνες &amp; ανεξαρτησία:</strong> Οι εικόνες προέρχονται από δημόσια αρχεία της NASA, ESA και STScI και χρησιμοποιούνται με αναφορά πηγής για εκπαιδευτικούς σκοπούς. Η ιστοσελίδα είναι ανεξάρτητο εκπαιδευτικό project και δεν συνδέεται ούτε εγκρίνεται από τη NASA, την ESA ή άλλον οργανισμό. <a href="privacy.html">Απόρρητο &amp; χρήση AI</a></p>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span class="js-year">2026</span> Universe Explorer · Εκπαιδευτικό project αστρονομίας</p>
+        <p class="credits">Χωρίς διαφημίσεις και χωρίς εργαλεία παρακολούθησης (analytics).</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="search" id="search" role="dialog" aria-modal="true" aria-label="Αναζήτηση στο Universe Explorer" aria-hidden="true">
+    <div class="search__panel">
+      <div class="search__bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <label class="sr-only" for="searchInput">Αναζήτηση πλανητών, άστρων, γαλαξιών, αποστολών</label>
+        <input class="search__input" id="searchInput" type="search" placeholder="Αναζήτησε πλανήτη, άστρο, γαλαξία, αποστολή…" autocomplete="off" spellcheck="false">
+        <button type="button" class="search__close" aria-label="Κλείσιμο αναζήτησης">Esc</button>
+      </div>
+      <div class="search__body" id="searchResults"></div>
+      <div class="search__foot">
+        <span>Πλοήγηση με <kbd>↑</kbd> <kbd>↓</kbd> · άνοιγμα με <kbd>Enter</kbd></span>
+        <span><kbd>/</kbd> ή <kbd>Ctrl</kbd>+<kbd>K</kbd> για γρήγορη αναζήτηση</span>
+      </div>
+    </div>
+  </div>
+  <div class="music" id="musicPlayer" aria-label="Ατμοσφαιρική μουσική" aria-hidden="true">
+    <div class="music__head">
+      <span class="music__label">Ambient · Cosmic Drift</span>
+      <span class="music__eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <button type="button" class="search__close js-music-close" aria-label="Κλείσιμο μουσικής">✕</button>
+    </div>
+    <p class="music__track">Ταξίδι στο άπειρο</p>
+    <div class="music__row">
+      <button type="button" class="music__play" aria-pressed="false" aria-label="Αναπαραγωγή μουσικής">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      </button>
+      <div class="music__vol">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M16 9a4.5 4.5 0 0 1 0 6"/></svg>
+        <label class="sr-only" for="musicVolume">Ένταση μουσικής</label>
+        <input type="range" id="musicVolume" min="0" max="100" value="45">
+      </div>
+    </div>
+    <p class="music__note">Ατμοσφαιρικός ήχος συνθεμένος στη στιγμή. Δεν ξεκινά ποτέ αυτόματα — μόνο με τη δική σου επιλογή.</p>
+  </div>
+  <button type="button" class="music-fab" aria-controls="musicPlayer" aria-label="Άνοιγμα μουσικής">
+    <span class="music-fab__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.4"/><circle cx="17.5" cy="16" r="2.4"/></svg></span>
+    <span class="music-fab__label">Μουσική</span>
+  </button>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/search-data.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/music.js" defer></script>
+  <div class="ai-note" role="note">
+    <span class="ai-note__badge">AI</span>
+    <span class="ai-note__text">Ψηφιακός βοηθός AI — όχι άνθρωπος</span>
+  </div>
+  <!-- ==== Chatling chatbot — αντικαταστήστε μόνο το chatbotId αν αλλάξει το bot ==== -->
+  <script>
+  window.chtlConfig = {
+      chatbotId: "3978654878"
+  }
+  </script>
+  <script
+      async
+      data-id="3978654878"
+      id="chtl-script"
+      type="text/javascript"
+      src="https://chatling.ai/js/embed.js">
+  </script>
+  <!-- ==== τέλος Chatling embed ==== -->
+</body>
+</html>

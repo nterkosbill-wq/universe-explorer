@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ζωή πέρα από τη Γη — Universe Explorer</title>
+  <meta name="description" content="Γνωρίζουμε πάνω από 5.000 επιβεβαιωμένους εξωπλανήτες και κανένα ίχνος ζωής. Όμως η αναζήτηση μόλις άρχισε: για πρώτη φορά μπορούμε να αναλύσουμε ατμόσφαιρες μικρών, βραχωδών κόσμω">
+  <meta name="theme-color" content="#04030f">
+  <meta property="og:title" content="Ζωή πέρα από τη Γη — Universe Explorer">
+  <meta property="og:description" content="Γνωρίζουμε πάνω από 5.000 επιβεβαιωμένους εξωπλανήτες και κανένα ίχνος ζωής. Όμως η αναζήτηση μόλις άρχισε: για πρώτη φορά μπορούμε να αναλύσουμε ατμόσφαιρες μικρών, βραχωδών κόσμω">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body class="page-interior">
+  <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="page-veil" aria-hidden="true"></div>
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__orbit"><span></span><span></span><span></span><i></i></div>
+    <p class="preloader__text">Ευθυγράμμιση με τα άστρα</p>
+    <div class="preloader__bar"><i></i></div>
+  </div>
+
+  <div class="space-bg" aria-hidden="true">
+    <canvas id="starfield"></canvas>
+    <div class="space-bg__nebula"></div>
+    <div class="space-bg__nebula space-bg__nebula--two"></div>
+    <div class="space-bg__grain"></div>
+  </div>
+  <header class="site-header" id="siteHeader">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1h)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2h)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1h" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2h" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+        <span class="brand__text">
+          <span class="brand__name">Universe</span>
+          <span class="brand__sub">Explorer</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Κύρια πλοήγηση">
+        <ul>
+          <li><a href="index.html">Αρχική</a></li>
+          <li><a href="solar-system.html">Ηλιακό Σύστημα</a></li>
+          <li><a href="stars.html">Άστρα</a></li>
+          <li><a href="galaxies.html">Γαλαξίες</a></li>
+          <li><a href="black-holes.html">Μαύρες Τρύπες</a></li>
+          <li><a href="exploration.html">Εξερεύνηση</a></li>
+          <li><a href="life.html" aria-current="page">Ζωή στο Σύμπαν</a></li>
+          <li><a href="mysteries.html">Μυστήρια</a></li>
+          <li><a href="quiz.html">Κουίζ</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <button type="button" class="icon-btn js-search-open" aria-label="Αναζήτηση" title="Αναζήτηση (/)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+        <button type="button" class="icon-btn js-music-toggle" aria-label="Μουσική" aria-controls="musicPlayer" title="Μουσική"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/></svg></button>
+        <button type="button" class="icon-btn nav-toggle" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" aria-label="Μενού πλοήγησης">
+    <div class="mobile-nav__top">
+      <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1m)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2m)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1m" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2m" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+        <span class="brand__text"><span class="brand__name">Universe</span><span class="brand__sub">Explorer</span></span>
+      </a>
+      <button type="button" class="icon-btn js-nav-close" aria-label="Κλείσιμο μενού"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <ul class="mobile-nav__list">
+          <li><a href="index.html"><span>01</span>Αρχική</a></li>
+          <li><a href="solar-system.html"><span>02</span>Ηλιακό Σύστημα</a></li>
+          <li><a href="stars.html"><span>03</span>Άστρα</a></li>
+          <li><a href="galaxies.html"><span>04</span>Γαλαξίες</a></li>
+          <li><a href="black-holes.html"><span>05</span>Μαύρες Τρύπες</a></li>
+          <li><a href="exploration.html"><span>06</span>Εξερεύνηση</a></li>
+          <li><a href="life.html" aria-current="page"><span>07</span>Ζωή στο Σύμπαν</a></li>
+          <li><a href="mysteries.html"><span>08</span>Μυστήρια</a></li>
+          <li><a href="quiz.html"><span>09</span>Κουίζ</a></li>
+    </ul>
+    <div class="mobile-nav__foot">
+      <p>Ένα ταξίδι στα βάθη του σύμπαντος, με επιστημονικά τεκμηριωμένο περιεχόμενο στα ελληνικά.</p>
+    </div>
+  </div>
+
+  <main id="main">
+  <section class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('assets/img/life-trappist.jpg')"></div>
+    <div class="container page-hero__inner">
+      <div>
+        <nav class="breadcrumb" aria-label="Διαδρομή"><a href="index.html">Αρχική</a><span aria-hidden="true">/</span><a href="life.html">Ζωή πέρα από τη Γη</a></nav>
+        <span class="page-hero__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M3.6 12h16.8M12 3.4c2.2 2.3 3.4 5.4 3.4 8.6S14.2 18.3 12 20.6c-2.2-2.3-3.4-5.4-3.4-8.6S9.8 5.7 12 3.4z"/></svg></span>
+        <p class="eyebrow">Η μεγαλύτερη ανοιχτή ερώτηση</p>
+        <h1>Ζωή πέρα από τη Γη</h1>
+        <p class="page-hero__lead">Γνωρίζουμε πάνω από 5.000 επιβεβαιωμένους εξωπλανήτες και κανένα ίχνος ζωής. Όμως η αναζήτηση μόλις άρχισε: για πρώτη φορά μπορούμε να αναλύσουμε ατμόσφαιρες μικρών, βραχωδών κόσμων.</p>
+      </div>
+      <div class="page-hero__side"><span>Επιβεβαιωμένοι εξωπλανήτες</span><strong>&gt; 5.000</strong></div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="stat-band reveal"><div class="stat"><span class="stat__value">&gt; 5.000</span><span class="stat__label">Επιβεβαιωμένοι εξωπλανήτες</span></div><div class="stat"><span class="stat__value">Δεκάδες</span><span class="stat__label">Βραχώδεις στη ζώνη κατοικησιμότητας</span></div><div class="stat"><span class="stat__value">Ενεργές και σε σχεδιασμό</span><span class="stat__label">Αποστολές αναζήτησης ζωής</span></div><div class="stat"><span class="stat__value">Κανένα επιβεβαιωμένο</span><span class="stat__label">Ίχνη εξωγήινης ζωής</span></div></div>
+    </div>
+  </section>
+  <div class="container article-layout">
+    <div class="article">
+      <section class="block reveal" id="erotima"><h2>Υπάρχει πιθανότητα εξωγήινης ζωής;</h2>
+<div class="prose"><p>Η επιστήμη δεν μπορεί να απαντήσει ακόμα, αλλά μπορεί να ορίσει το πλαίσιο. Γνωρίζουμε ότι η ζωή στη Γη εμφανίστηκε σχεδόν αμέσως μόλις οι συνθήκες το επέτρεψαν — μέσα σε λίγες εκατοντάδες εκατομμύρια χρόνια. Γνωρίζουμε ότι τα χημικά συστατικά της ζωής (άνθρακας, νερό, οργανικές ενώσεις) είναι κοινά στο σύμπαν και βρίσκονται ακόμη και σε κομήτες.</p><p>Αυτό δεν σημαίνει ότι η ζωή είναι συχνή. Το αντίθετο: το πέρασμα από απλά μόρια σε αυτοαναπαραγόμενους οργανισμούς μπορεί να είναι εξαιρετικά σπάνιο. Η απάντηση βρίσκεται κάπου ανάμεσα στο «είμαστε μόνοι» και στο «το σύμπαν είναι γεμάτο ζωή» — και κανείς δεν ξέρει πού.</p></div>
+      </section>      <section class="block reveal" id="exoplanetes"><h2>Εξωπλανήτες: πώς τους βρίσκουμε</h2>
+<div class="prose"><p>Οι εξωπλανήτες είναι δύσκολο να δεις: χάνονται στη λάμψη του άστρου τους. Γι' αυτό ανιχνεύονται έμμεσα. Η μέθοδος <strong>διέλευσης</strong> μετρά τη μικρή μείωση φωτεινότητας όταν ο πλανήτης περνά μπροστά από το άστρο. Η μέθοδος <strong>ακτινικής ταχύτητας</strong> μετρά την κίνηση του άστρου που προκαλεί η βαρύτητα του πλανήτη. Υπάρχουν επίσης μικροβαρυτική μικροεστίαση και, πρόσφατα, απευθείας απεικόνιση με στεφάνη.</p><p>Το τηλεσκόπιο Kepler (2009–2018) έδειξε ότι οι πλανήτες είναι ο κανόνας, όχι η εξαίρεση: σχεδόν κάθε άστρο φαίνεται να έχει τουλάχιστον έναν. Το TESS συνεχίζει την αναζήτηση σε κοντινά άστρα, κατάλληλα για φασματοσκοπία με το James Webb.</p></div>
+      </section>      <section class="block reveal" id="zoni"><h2>Η κατοικήσιμη ζώνη</h2>
+<div class="prose"><p>Η <strong>κατοικήσιμη ζώνη</strong> είναι η περιοχή γύρω από ένα άστρο όπου ένας βραχώδης πλανήτης με κατάλληλη ατμόσφαιρα θα μπορούσε να διατηρεί υγρό νερό στην επιφάνειά του. Δεν είναι ούτε απαραίτητη ούτε επαρκής συνθήκη για ζωή: η Αφροδίτη και ο Άρης βρίσκονται στα όριά της, αλλά κανένας δεν είναι κατοικήσιμος σήμερα.</p><p>Η ζώνη εξαρτάται από τη φωτεινότητα του άστρου, που αλλάζει με τον χρόνο. Ένα άστρο σαν τον Ήλιο γίνεται σταδιακά λαμπρότερο, άρα η ζώνη μετακινείται προς τα έξω. Οι ερυθροί νάνοι — τα πιο κοινά άστρα — έχουν πολύ στενές ζώνες και έντονη ακτινοβολία κατά τις εκλάμψεις τους, γεγονός που περιπλέκει την εικόνα.</p></div>
+      </section>      <section class="block reveal" id="gis"><h2>Κόσμοι που μοιάζουν με τη Γη</h2>
+<p class="lead">Κανένας δεν είναι «δεύτερη Γη» — αλλά κάποιοι είναι τα καλύτερα υποψήφια που έχουμε μέχρι σήμερα.</p><div class="grid grid--3"><article class="card">
+<div class="media media--wide media--bleed media--zoom"><img src="assets/img/life-planets.jpg" alt="Proxima Centauri b" decoding="async" loading="lazy"></div>
+<div class="card__body"><h3 class="card__title">Proxima Centauri b</h3><p class="card__text">Ο πλησιέστερος εξωπλανήτης, γύρω από τον ερυθρό νάνο του συστήματος Άλφα Κενταύρου. Βρίσκεται στη ζώνη κατοικησιμότητας, αλλά η έντονη αστρική δραστηριότητα μπορεί να έχει γυμνώσει την ατμόσφαιρά του.</p><div class="card__meta"><span class="badge badge--confirmed">Επιβεβαιωμένος</span><span>4,2 έτη φωτός</span></div></div></article><article class="card">
+<div class="media media--wide media--bleed media--zoom"><img src="assets/img/life-trappist.jpg" alt="TRAPPIST-1e" decoding="async" loading="lazy"></div>
+<div class="card__body"><h3 class="card__title">TRAPPIST-1e</h3><p class="card__text">Ένας από επτά βραχώδεις πλανήτες γύρω από έναν μικροσκοπικό ερυθρό νάνο. Το μέγεθος και η πυκνότητά του είναι παρόμοια με της Γης και δέχεται περίπου την ίδια ενέργεια από το άστρο του.</p><div class="card__meta"><span class="badge badge--confirmed">Επιβεβαιωμένος</span><span>40 έτη φωτός</span></div></div></article><article class="card">
+<div class="media media--wide media--bleed media--zoom"><img src="assets/img/planet-earth.jpg" alt="Kepler-452b" decoding="async" loading="lazy"></div>
+<div class="card__body"><h3 class="card__title">Kepler-452b</h3><p class="card__text">Πλανήτης σε τροχιά γύρω από ένα άστρο σαν τον Ήλιο, με περίοδο 385 ημερών. Είναι 60% μεγαλύτερος από τη Γη και πιθανώς βραχώδης — ένα «μεγαλύτερο ξαδέρφι» της.</p><div class="card__meta"><span class="badge badge--confirmed">Επιβεβαιωμένος</span><span>1.400 έτη φωτός</span></div></div></article><article class="card">
+<div class="media media--wide media--bleed media--zoom"><img src="assets/img/galaxy-milkyway.jpg" alt="Kepler-186f" decoding="async" loading="lazy"></div>
+<div class="card__body"><h3 class="card__title">Kepler-186f</h3><p class="card__text">Ο πρώτος βραχώδης πλανήτης στο μέγεθος της Γης που βρέθηκε στη ζώνη κατοικησιμότητας ενός άλλου άστρου. Το φως του άστρου του είναι πιο κόκκινο, οπότε η «μέρα» του θα έμοιαζε με το λυκόφως.</p><div class="card__meta"><span class="badge badge--confirmed">Επιβεβαιωμένος</span><span>500 έτη φωτός</span></div></div></article></div>
+      </section>      <section class="block reveal" id="vioupografes"><h2>Βιοϋπογραφές: τι θα θεωρούσαμε απόδειξη</h2>
+<div class="prose"><p>Δεν ψάχνουμε για UFO — ψάχνουμε για χημεία που δεν εξηγείται χωρίς ζωή. Μια <strong>βιοϋπογραφή</strong> είναι ένα μόριο ή μια αναλογία αερίων που δείχνει ενεργό βιολογία. Στη Γη, το οξυγόνο και το μεθάνιο συνυπάρχουν σε ανισορροπία μόνο επειδή τα παράγουν έμβια όντα.</p><p>Το James Webb ήδη μετρά ατμόσφαιρες πλανητών όπως ο K2-18b και ο TRAPPIST-1e, αναζητώντας νερό, διοξείδιο του άνθρακα, μεθάνιο και διμεθυλοσουλφίδιο. Κάθε ανίχνευση χρειάζεται ανεξάρτητη επιβεβαίωση: αρκετές «ανακαλύψεις» στο παρελθόν ήταν στατιστικά θόρυβος.</p></div>
+      </section>      <section class="block reveal" id="note-6">
+<div class="note note--unknown"><span class="note__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 8v4.6M12 16h.01"/></svg></span><div><p><strong>Επιβεβαιωμένο:</strong> Υπάρχουν πάνω από 5.000 εξωπλανήτες, με χιλιάδες ακόμη υποψηφίους. Υπάρχει υγρό νερό σε υπόγειους ωκεανούς της Ευρώπης και του Εγκέλαδου. Οργανικά μόρια υπάρχουν σε κομήτες και σε μεσοαστρικά νέφη.</p><p><strong>Μη επιβεβαιωμένο:</strong> Δεν υπάρχει καμία αποδεδειγμένη βιοϋπογραφή σε εξωπλανήτη, κανένα ίχνος εξωγήινης τεχνολογίας και καμία απόδειξη ότι η ζωή εμφανίστηκε κάπου αλλού. Η απάντηση στο ερώτημα «είμαστε μόνοι;» παραμένει ανοιχτή.</p></div></div>
+      </section>
+    </div>
+    <aside class="toc" aria-label="Σε αυτή τη σελίδα"><span class="toc__label">Σε αυτή τη σελίδα</span><a href="#erotima">Υπάρχει πιθανότητα εξωγήινης ζωής;</a><a href="#exoplanetes">Εξωπλανήτες: πώς τους βρίσκουμε</a><a href="#zoni">Η κατοικήσιμη ζώνη</a><a href="#gis">Κόσμοι που μοιάζουν με τη Γη</a><a href="#vioupografes">Βιοϋπογραφές: τι θα θεωρούσαμε απόδειξη</a><a class="toc__cta" href="#main">↑ Επιστροφή στην κορυφή</a></aside>
+  </div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="Universe Explorer — αρχική">
+            <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="7" fill="url(#bm1f)"/>
+        <ellipse cx="20" cy="20" rx="17.5" ry="6.4" stroke="url(#bm2f)" stroke-width="1.1" transform="rotate(-24 20 20)"/>
+        <circle cx="33" cy="27" r="1.7" fill="#8fe3ff"/>
+        <defs>
+          <radialGradient id="bm1f" cx=".35" cy=".3" r=".8">
+            <stop offset="0" stop-color="#fff3d8"/>
+            <stop offset=".5" stop-color="#ffc978"/>
+            <stop offset="1" stop-color="#8b5cf6"/>
+          </radialGradient>
+          <linearGradient id="bm2f" x1="2" y1="20" x2="38" y2="20">
+            <stop offset="0" stop-color="#6ad7ff" stop-opacity=".1"/>
+            <stop offset=".5" stop-color="#b9a6ff"/>
+            <stop offset="1" stop-color="#6ad7ff" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+      </svg>
+            <span class="brand__text"><span class="brand__name">Universe</span><span class="brand__sub">Explorer</span></span>
+          </a>
+          <p>Μια διαδραστική πλατφόρμα εξερεύνησης του σύμπαντος: πλανήτες, άστρα, γαλαξίες, μαύρες τρύπες και τα μεγάλα ερωτήματα που ακόμη περιμένουν απάντηση.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Εξερεύνηση</h4>
+          <ul>
+            <li><a href="solar-system.html">Ηλιακό Σύστημα</a></li>
+            <li><a href="stars.html">Άστρα &amp; Αστρική Εξέλιξη</a></li>
+            <li><a href="galaxies.html">Γαλαξίες</a></li>
+            <li><a href="black-holes.html">Μαύρες Τρύπες</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ανακάλυψε</h4>
+          <ul>
+            <li><a href="exploration.html">Εξερεύνηση του Διαστήματος</a></li>
+            <li><a href="life.html">Ζωή πέρα από τη Γη</a></li>
+            <li><a href="mysteries.html">Τα Μεγάλα Μυστήρια</a></li>
+            <li><a href="quiz.html">Κουίζ Γνώσεων</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Σχετικά</h4>
+          <ul>
+            <li><a href="index.html#journey">Οι ενότητες</a></li>
+            <li><a href="index.html#timeline">Χρονολόγιο σύμπαντος</a></li>
+            <li><a href="solar-system.html#orrery">Διαδραστικό ηλιακό σύστημα</a></li>
+            <li><a href="exploration.html#credits">Πηγές εικόνων</a></li>
+            <li><a href="privacy.html">Απόρρητο &amp; χρήση AI</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-disclosure">
+        <p><strong>Διαφάνεια AI:</strong> Το κείμενο, η σχεδίαση και ο κώδικας της ιστοσελίδας δημιουργήθηκαν με τη βοήθεια συστημάτων τεχνητής νοημοσύνης (AI). Ο ψηφιακός βοηθός στο κουμπί συνομιλίας είναι επίσης σύστημα AI, όχι άνθρωπος, και οι απαντήσεις του μπορεί να περιέχουν ανακρίβειες. Το περιεχόμενο έχει εκπαιδευτικό χαρακτήρα και δεν αποτελεί επαγγελματική συμβουλή.</p>
+        <p><strong>Εικόνες &amp; ανεξαρτησία:</strong> Οι εικόνες προέρχονται από δημόσια αρχεία της NASA, ESA και STScI και χρησιμοποιούνται με αναφορά πηγής για εκπαιδευτικούς σκοπούς. Η ιστοσελίδα είναι ανεξάρτητο εκπαιδευτικό project και δεν συνδέεται ούτε εγκρίνεται από τη NASA, την ESA ή άλλον οργανισμό. <a href="privacy.html">Απόρρητο &amp; χρήση AI</a></p>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span class="js-year">2026</span> Universe Explorer · Εκπαιδευτικό project αστρονομίας</p>
+        <p class="credits">Χωρίς διαφημίσεις και χωρίς εργαλεία παρακολούθησης (analytics).</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="search" id="search" role="dialog" aria-modal="true" aria-label="Αναζήτηση στο Universe Explorer" aria-hidden="true">
+    <div class="search__panel">
+      <div class="search__bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <label class="sr-only" for="searchInput">Αναζήτηση πλανητών, άστρων, γαλαξιών, αποστολών</label>
+        <input class="search__input" id="searchInput" type="search" placeholder="Αναζήτησε πλανήτη, άστρο, γαλαξία, αποστολή…" autocomplete="off" spellcheck="false">
+        <button type="button" class="search__close" aria-label="Κλείσιμο αναζήτησης">Esc</button>
+      </div>
+      <div class="search__body" id="searchResults"></div>
+      <div class="search__foot">
+        <span>Πλοήγηση με <kbd>↑</kbd> <kbd>↓</kbd> · άνοιγμα με <kbd>Enter</kbd></span>
+        <span><kbd>/</kbd> ή <kbd>Ctrl</kbd>+<kbd>K</kbd> για γρήγορη αναζήτηση</span>
+      </div>
+    </div>
+  </div>
+  <div class="music" id="musicPlayer" aria-label="Ατμοσφαιρική μουσική" aria-hidden="true">
+    <div class="music__head">
+      <span class="music__label">Ambient · Cosmic Drift</span>
+      <span class="music__eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <button type="button" class="search__close js-music-close" aria-label="Κλείσιμο μουσικής">✕</button>
+    </div>
+    <p class="music__track">Ταξίδι στο άπειρο</p>
+    <div class="music__row">
+      <button type="button" class="music__play" aria-pressed="false" aria-label="Αναπαραγωγή μουσικής">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      </button>
+      <div class="music__vol">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M16 9a4.5 4.5 0 0 1 0 6"/></svg>
+        <label class="sr-only" for="musicVolume">Ένταση μουσικής</label>
+        <input type="range" id="musicVolume" min="0" max="100" value="45">
+      </div>
+    </div>
+    <p class="music__note">Ατμοσφαιρικός ήχος συνθεμένος στη στιγμή. Δεν ξεκινά ποτέ αυτόματα — μόνο με τη δική σου επιλογή.</p>
+  </div>
+  <button type="button" class="music-fab" aria-controls="musicPlayer" aria-label="Άνοιγμα μουσικής">
+    <span class="music-fab__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.4"/><circle cx="17.5" cy="16" r="2.4"/></svg></span>
+    <span class="music-fab__label">Μουσική</span>
+  </button>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/search-data.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/music.js" defer></script>
+  <script src="assets/js/interactive.js" defer></script>
+  <div class="ai-note" role="note">
+    <span class="ai-note__badge">AI</span>
+    <span class="ai-note__text">Ψηφιακός βοηθός AI — όχι άνθρωπος</span>
+  </div>
+  <!-- ==== Chatling chatbot — αντικαταστήστε μόνο το chatbotId αν αλλάξει το bot ==== -->
+  <script>
+  window.chtlConfig = {
+      chatbotId: "3978654878"
+  }
+  </script>
+  <script
+      async
+      data-id="3978654878"
+      id="chtl-script"
+      type="text/javascript"
+      src="https://chatling.ai/js/embed.js">
+  </script>
+  <!-- ==== τέλος Chatling embed ==== -->
+</body>
+</html>
