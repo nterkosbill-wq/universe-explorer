@@ -34,6 +34,25 @@ tools/                    # Γεννήτρια σελίδων (Python 3, μόν�
 - Για email επικοινωνίας απόρρητου, όρισε τη μεταβλητή `CONTACT_EMAIL` στην αρχή του
   `tools/site.py` και ξανατρέξε `python3 tools/build.py`.
 
+## Δημόσιος σύνδεσμος (GitHub Pages)
+
+https://nterkosbill-wq.github.io/universe-explorer/
+
+Το site δημοσιεύεται από το branch `gh-pages` του repo
+[`nterkosbill-wq/universe-explorer`](https://github.com/nterkosbill-wq/universe-explorer)
+(ο πηγαίος κώδικας είναι στο `master`). Για ενημέρωση μετά από αλλαγή στο `src/` ή στο `tools/`:
+
+```bash
+python3 tools/build.py
+rm -rf /tmp/ghpages && mkdir -p /tmp/ghpages
+cp -a dist/. /tmp/ghpages/ && cd /tmp/ghpages
+printf '' > .nojekyll && git init -q && git add -A
+git commit -m "Build: Universe Explorer"
+git push -f https://github.com/nterkosbill-wq/universe-explorer.git HEAD:gh-pages
+```
+
+Σε αυτόν τον σύνδεσμο το Chatling chatbot φορτώνει και απαντά κανονικά.
+
 ## Τοπική προβολή
 
 Η ιστοσελίδα είναι πλήρως στατική — αρκεί ένας απλός server (τα σχετικά links δεν
